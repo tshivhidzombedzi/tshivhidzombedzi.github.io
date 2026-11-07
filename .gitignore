@@ -1,0 +1,10 @@
+dist/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+
+# Private material — never publish.
+# Job-application drafts, internal planning notes about my own gaps, and anything
+# containing server credentials. These live on disk and are deliberately untracked.
+private/
