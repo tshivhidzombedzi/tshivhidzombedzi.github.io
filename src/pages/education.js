@@ -21,6 +21,28 @@ export default function educationPage() {
     </p>`,
     )}
     <p class="edu-card-n">${esc(e.note)}</p>
+    ${when(
+      e.credential,
+      () => `<p class="edu-cred">${esc(e.credential)}</p>`,
+    )}
+    ${when(
+      e.outcomes && e.outcomes.length,
+      () => `
+    <div class="edu-block">
+      <p class="edu-block-k">Registered exit-level outcomes</p>
+      <ul class="edu-sub">${list(e.outcomes, (o) => `<li>${esc(o)}</li>`)}</ul>
+    </div>`,
+    )}
+    ${when(
+      e.curriculum && e.curriculum.length,
+      () => `
+    <div class="edu-block">
+      <p class="edu-block-k">Curriculum covered <span class="edu-src">${esc(
+        e.curriculumSource || '',
+      )}</span></p>
+      <ul class="chips chips--sm">${list(e.curriculum, (c) => `<li>${esc(c)}</li>`)}</ul>
+    </div>`,
+    )}
     <p class="edu-card-rel"><span class="edu-rel-k">Why it matters here</span> ${esc(e.relevance)}</p>
   </article>`;
 
@@ -34,6 +56,14 @@ export default function educationPage() {
       way here, is excluded from my CV, and is described nowhere on this site as a completed
       certification — because its completion has not been verified.
     </p>
+    <div class="head-note">
+      <p>
+        <strong>About the curriculum lists.</strong> Each one is taken from the official record
+        for that qualification &mdash; the SAQA registration for the Higher Certificate, UNISA's
+        own module listing, and the published course syllabus for CS50 AI. They state what the
+        programme covers, not a claim that I have mastered every topic in it.
+      </p>
+    </div>
   </div>
 </section>
 

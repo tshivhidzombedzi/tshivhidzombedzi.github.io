@@ -502,6 +502,35 @@ section.alt {
   color: var(--text-4);
 }
 
+/* "Open to" strip: the first thing a recruiter needs, directly under the hero actions.
+   Flat outlined chips, no pill shapes or colour — this is information, not decoration. */
+.open-to {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.open-to-k {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 0.8rem;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chips li {
+  font-size: 0.8438rem;
+  font-weight: 500;
+  color: var(--text-2);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line-2);
+  border-radius: 3px;
+}
+
 /* Facts row: a hairline table, not coloured tiles. */
 .proof {
   display: grid;
@@ -1734,6 +1763,62 @@ section.alt .edu-card {
   color: var(--text-4);
   font-weight: 600;
   margin-bottom: 0.25rem;
+}
+
+.edu-cred {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-3);
+  padding: 0.3rem 0;
+}
+.edu-block {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+.edu-block-k {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: 0.6562rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 0.6rem;
+}
+.edu-src {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-4);
+  opacity: 0.85;
+}
+.edu-sub {
+  display: grid;
+  gap: 0.4rem;
+}
+.edu-sub li {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  padding-left: 0.95rem;
+  position: relative;
+}
+.edu-sub li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 1px;
+  background: var(--line-3);
+}
+.chips--sm li {
+  font-size: 0.7812rem;
+  padding: 0.2rem 0.5rem;
+  color: var(--text-3);
 }
 
 /* ---------- career ---------- */

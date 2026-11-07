@@ -23,6 +23,28 @@ export const education = [
     // Diploma" his LinkedIn currently claims. This entry is correct; the LinkedIn entry is
     // the one that needs fixing. See private/LINKEDIN-FINDINGS.md section 1.
     verified: '2026-11-08',
+    credential: 'NQF Level 5 · 132 credits · SAQA ID 81866',
+    // Curriculum taken from the official SAQA qualification record (SAQA ID 81866), not from
+    // memory. It states what the qualification covers; it is NOT a claim of mastery of each
+    // module, and the page labels it as the registered curriculum for that reason.
+    curriculumSource: 'Registered curriculum, SAQA ID 81866',
+    curriculum: [
+      'Computer Architecture',
+      'Help Desk',
+      'Network Architecture A',
+      'End-User Computing A, B and C',
+      'Web Development',
+      'Business Communication C',
+      'Business Calculations',
+      'Business Practice and Entrepreneurship',
+      'Work Integrated Learning project',
+    ],
+    outcomes: [
+      'Present and communicate information reliably and appropriately in a business environment',
+      'Support computer hardware within a business environment',
+      'Support software within a business environment',
+      'Operate a helpdesk service following accepted helpdesk processes',
+    ],
     note:
       'Formal grounding in IT support: hardware, operating systems, networking fundamentals, user support and service practice.',
     relevance:
@@ -44,6 +66,19 @@ export const education = [
     // fixing. Keep the certificate or transcript to hand — this is the strongest academic
     // claim on the CV and the most likely to be checked.
     verified: '2026-11-08',
+    credential: 'NQF Level 8 · 12 credits · Honours-year module',
+    // NQF level, credits and honours-year status independently corroborated against UNISA's
+    // own module registration listing on 2026-11-08, not taken on trust.
+    curriculumSource: "Corroborated against UNISA's module listing",
+    curriculum: [
+      'Identification and authentication',
+      'Authorisation and access control',
+      'Confidentiality and integrity',
+      'Non-repudiation',
+      'Risk analysis',
+      'Cryptography fundamentals',
+      'Security planning and policy compliance',
+    ],
     note:
       'A single NQF level 8 module passed with distinction, not a full qualification — stated that way deliberately.',
     relevance:
@@ -72,6 +107,17 @@ export const education = [
     level: null,
     result: null,
     unverified: true,
+    credential: 'HarvardX via edX · 7 topics',
+    curriculumSource: 'Official course syllabus',
+    curriculum: [
+      'Search',
+      'Knowledge representation',
+      'Uncertainty',
+      'Optimization',
+      'Learning',
+      'Neural networks',
+      'Language',
+    ],
     note:
       'IN PROGRESS. Not described as a completed certification anywhere on this site, and excluded from the CV, because completion has not been verified.',
     relevance:
