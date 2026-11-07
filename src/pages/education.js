@@ -29,7 +29,7 @@ export default function educationPage() {
       e.outcomes && e.outcomes.length,
       () => `
     <div class="edu-block">
-      <p class="edu-block-k">Registered exit-level outcomes</p>
+      <p class="edu-block-k">${esc(e.outcomesLabel || 'Registered exit-level outcomes')}</p>
       <ul class="edu-sub">${list(e.outcomes, (o) => `<li>${esc(o)}</li>`)}</ul>
     </div>`,
     )}
