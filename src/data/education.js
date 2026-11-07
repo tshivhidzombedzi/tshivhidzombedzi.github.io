@@ -19,6 +19,10 @@ export const education = [
     period: 'Completed March 2024',
     level: null,
     result: null,
+    // CONFIRMED BY HIM 2026-11-08: it is a Higher Certificate, not the "Higher National
+    // Diploma" his LinkedIn currently claims. This entry is correct; the LinkedIn entry is
+    // the one that needs fixing. See private/LINKEDIN-FINDINGS.md section 1.
+    verified: '2026-11-08',
     note:
       'Formal grounding in IT support: hardware, operating systems, networking fundamentals, user support and service practice.',
     relevance:
@@ -34,6 +38,12 @@ export const education = [
     level: 'NQF Level 8',
     result: 'Distinction',
     isModule: true,
+    // CONFIRMED BY HIM 2026-11-08: it is INF4831 at NQF level 8, passed with distinction.
+    // His LinkedIn describes the same study as "Certificate, Introduction to Information
+    // Security", which UNDERSTATES it. This entry is correct; the LinkedIn entry needs
+    // fixing. Keep the certificate or transcript to hand — this is the strongest academic
+    // claim on the CV and the most likely to be checked.
+    verified: '2026-11-08',
     note:
       'A single NQF level 8 module passed with distinction, not a full qualification — stated that way deliberately.',
     relevance:
