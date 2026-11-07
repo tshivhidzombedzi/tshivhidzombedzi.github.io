@@ -1215,6 +1215,61 @@ section.alt .card {
   font-size: 0.9688rem;
 }
 
+/* "How it works": the launch-explainer section. Numbered mechanism steps, then the one
+   genuinely interesting idea pulled out. Restraint is the point — the specificity carries it,
+   so there is no accent wash, no gradient and no oversized type. */
+.how-intro p {
+  font-size: 1.0625rem;
+  color: var(--text);
+  max-width: 68ch;
+  margin-bottom: 1.6rem;
+  line-height: 1.55;
+}
+.how-steps {
+  counter-reset: hw;
+  display: grid;
+  border-top: 1px solid var(--line);
+  max-width: 78ch;
+}
+.how-steps li {
+  counter-increment: hw;
+  position: relative;
+  padding: 1.25rem 0 1.25rem 3.2rem;
+  border-bottom: 1px solid var(--line);
+}
+.how-steps li::before {
+  content: counter(hw, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 1.35rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+.how-steps h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+.how-steps p {
+  font-size: 0.9375rem;
+  color: var(--text-2);
+}
+.hard-part {
+  margin-top: 1.9rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--line-2);
+  border-left: 2px solid var(--accent);
+  background: var(--surface);
+  max-width: 78ch;
+}
+.hard-part h3 {
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+.hard-part .rich p {
+  font-size: 0.9375rem;
+}
+
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));

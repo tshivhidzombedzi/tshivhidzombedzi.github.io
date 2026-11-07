@@ -1,6 +1,7 @@
 import { esc, prose, list, when, section, link } from '../lib/html.js';
 import projects from '../data/projects.js';
 import { renderDiagram } from '../templates/diagrams.js';
+import { howItWorks } from '../data/how-it-works.js';
 
 /** Projects index. */
 export function projectsIndex() {
@@ -83,6 +84,7 @@ export function projectPage(p) {
     ['overview', 'Overview'],
     ['problem', 'The problem'],
     ['solution', 'The solution'],
+    ['how', 'How it works'],
     ['stack', 'Technology stack'],
     ['architecture', 'System architecture'],
     ['responsibilities', 'My responsibilities'],
@@ -184,6 +186,36 @@ export function projectPage(p) {
       <h2>The solution</h2>
       <div class="rich">${prose(p.solution)}</div>
     </section>
+
+    ${when(
+      howItWorks[p.slug],
+      () => {
+        const h = howItWorks[p.slug];
+        return `
+    <section id="how" class="ps ps--how">
+      <h2>How it works</h2>
+      <div class="how-intro">${prose(h.intro)}</div>
+      <ol class="how-steps">
+        ${list(
+          h.steps,
+          (st) => `
+        <li>
+          <h3>${esc(st.t)}</h3>
+          <p>${esc(st.d)}</p>
+        </li>`,
+        )}
+      </ol>
+      ${when(
+        h.hardPart,
+        () => `
+      <aside class="hard-part">
+        <h3>${esc(h.hardPart.t)}</h3>
+        <div class="rich">${prose(h.hardPart.d)}</div>
+      </aside>`,
+      )}
+    </section>`;
+      },
+    )}
 
     <section id="stack" class="ps">
       <h2>Technology stack</h2>
