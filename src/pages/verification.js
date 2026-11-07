@@ -21,7 +21,6 @@ export default function verification() {
       <div>
         <p class="vcase-disc">${esc(c.discipline)}</p>
         <h3>${esc(c.title)}</h3>
-        <p class="vcase-proj"><a href="/projects/${esc(c.project)}/">${esc(c.projectLabel)}</a></p>
       </div>
     </div>
     <div class="vcase-body">
@@ -80,7 +79,7 @@ ${section({
   title: 'The adoption test those cases produced',
   className: 'alt',
   lead:
-    'Every candidate change to my trading product now goes through this. The specific domain is ' +
+    'Every candidate change to the system this came from goes through it. The domain is ' +
     'incidental — the structure is the same one an evaluation harness needs.',
   body: renderDiagram('evalLoop'),
 })}

@@ -71,11 +71,11 @@ export const labEntries = [
     area: 'AI content evaluation',
     title: 'Automated narration verification',
     status: 'implemented',
-    project: 'course-pipeline',
+    project: 'hoshi-nova',
     what:
-      'Every one of thirty produced lessons had its synthesised narration transcribed back by speech recognition and compared against the written script before release.',
+      'Synthesised narration is transcribed back by speech recognition and compared against the written script before an episode is allowed out of the pipeline.',
     how:
-      'ASR as an instrument rather than a feature. A synthesis dropout or a wrong take produces a transcript mismatch, which is detectable automatically; a human reviewing thirty videos will miss some and will be bored by the fourth.',
+      'Speech recognition used as an instrument rather than a feature. A synthesis dropout or a wrong take produces a transcript mismatch, which is detectable automatically; a human reviewing twenty hours of output will miss some, and will be bored long before the end.',
     takeaway:
       'Generated output needs a machine-checkable definition of correct. Without one, quality control is someone\'s attention span.',
   },
@@ -83,11 +83,11 @@ export const labEntries = [
     area: 'AI content evaluation',
     title: 'Pedagogical review: correct content that teaches the wrong thing',
     status: 'implemented',
-    project: 'course-pipeline',
+    project: null,
     what:
       'A review stage that asks what a reader would conclude, rather than only whether the facts are accurate.',
     how:
-      'It exists because a chart in a risk-management lesson was entirely accurate and taught the opposite of the lesson: plotting balance over a profitable sequence made the high-risk setting look better. Changing the measure to drawdown-from-peak fixed it. No factual check would ever have flagged it.',
+      'It exists because a chart in instructional material I produced was entirely accurate and taught the opposite of its lesson: plotting the final value over a favourable sequence made the more aggressive configuration look better. Changing what the chart measured fixed it. No factual check would ever have flagged it.',
     takeaway:
       'The most dangerous failure in generated content is not inaccuracy, it is accurate material that implies something false. Catching it means evaluating the inference a reader will draw, not the facts on the page, which is what content evaluation work consists of.',
   },
@@ -95,23 +95,23 @@ export const labEntries = [
     area: 'Model testing and evaluation',
     title: 'Split-half adoption testing',
     status: 'implemented',
-    project: 'apex-drawdown-zero',
+    project: null,
     what:
       'A rule that a change is adopted only if it independently improves both halves of a held-out split, with documented rejections.',
     how:
-      'Candidate changes are measured in-sample and out-of-sample separately. Several structurally appealing improvements were rejected for failing one half while improving the total — including one that produced more winners and lost money.',
+      'Candidate changes are measured in-sample and out-of-sample separately. Several structurally appealing improvements were rejected for failing one half while improving the total — including one that produced more successful outcomes and performed worse overall.',
     takeaway:
-      'Aggregate improvement hides overfitting. A held-out split with an adoption rule is the cheapest defence available, and the discipline is identical whether the thing being evaluated is a strategy or a model.',
+      'Aggregate improvement hides overfitting. A held-out split with an adoption rule is the cheapest defence available, and the discipline is identical whatever is being evaluated.',
   },
   {
     area: 'Model testing and evaluation',
     title: 'Measurement-instrument validation',
     status: 'implemented',
-    project: 'apex-drawdown-zero',
+    project: null,
     what:
       'Establishing that the platform\'s own reported success metric was wrong for my system, and rebuilding the measurement before trusting any result.',
     how:
-      'Partial closes mean one outcome produces two platform records, inflating the reported count and win rate. Records are now paired back into outcomes before anything is measured. The change I eventually adopted moves the platform\'s reported figure down while the true figure goes up.',
+      'A two-stage operation produces two platform records, inflating the reported count and success rate. Records are now paired back into whole outcomes before anything is measured. The change I eventually adopted moves the platform\'s reported figure down while the true figure goes up.',
     takeaway:
       'Validate the instrument before the hypothesis. Trusting the dashboard would have rejected a genuine improvement, and I would never have known.',
   },
@@ -126,18 +126,6 @@ export const labEntries = [
       'Separately runnable stages, a resumable queue that outlives its controlling session, and a gate measuring resolution, frame rate and audio level that restores the previous master on failure.',
     takeaway:
       'Automating production without automating refusal just produces bad output faster. The gate is the part that makes the automation trustworthy.',
-  },
-  {
-    area: 'AI workflow automation',
-    title: 'Generated educational content at scale, published',
-    status: 'implemented',
-    project: 'course-pipeline',
-    what:
-      'Thirty lessons and thirty vertical shorts, each with six artefacts, generated, verified and scheduled across ten weeks.',
-    how:
-      'Lesson-as-data-file, real market data behind every chart, a compute-before-you-write rule for every figure, and resumable publishing automation.',
-    takeaway:
-      'Consistency is the real deliverable in a course, and consistency is the first thing a human doing repetitive work loses.',
   },
   {
     area: 'Document intelligence',

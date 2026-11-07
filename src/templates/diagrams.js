@@ -233,92 +233,14 @@ export const diagrams = {
       ],
     }),
 
-  mcpLabs: () =>
-    flow({
-      id: 'mcp',
-      title: 'MCP Labs platform and licensing architecture',
-      desc:
-        'A single front controller in the web root with all application code outside it. Licensed software in the field validates against one endpoint, reporting enough context to detect sharing without any second protocol.',
-      rows: [
-        {
-          nodes: [
-            { t: 'Visitor / customer', kind: 'in' },
-            { t: 'Licensed software in the field', sub: 'reports broker · account · machine hash', kind: 'in' },
-          ],
-        },
-        { nodes: [{ t: 'Front controller', sub: 'the only file in the web root', kind: 'proc' }] },
-        {
-          nodes: [
-            { t: 'Public pages', kind: 'proc' },
-            { t: 'Customer portal', kind: 'proc' },
-            { t: 'Admin', kind: 'proc' },
-            { t: 'Licence validate API', kind: 'proc' },
-          ],
-        },
-        {
-          nodes: [{ t: 'Application code', sub: 'outside the web root · no framework, no Composer', kind: 'proc' }],
-        },
-        {
-          nodes: [
-            {
-              t: 'Sharing detection',
-              sub: 'requires more than one distinct user before flagging',
-              kind: 'gate',
-            },
-          ],
-          note: 'That condition exists because the first version flagged two legitimate customers.',
-        },
-        { nodes: [{ t: 'SQLite', sub: 'licences · accounts · products · settings', kind: 'store' }] },
-        {
-          nodes: [
-            { t: 'Licence issued / validated', kind: 'out' },
-            { t: 'Beta licence', sub: 'hidden product · excluded from "customer"', kind: 'out' },
-          ],
-        },
-      ],
-    }),
 
-  apex: () =>
-    flow({
-      id: 'apex',
-      title: 'Apex Drawdown Zero decision flow',
-      desc:
-        'A sequence of gates that mostly decline to trade. A stop-loss is attached at order time and position size is derived from the risk percentage and the actual stop distance, so risk stays constant across symbols and account size.',
-      rows: [
-        { nodes: [{ t: 'New market data', kind: 'in' }] },
-        { nodes: [{ t: 'Licence validation', sub: 'account-bound, checked on start', kind: 'gate' }] },
-        {
-          nodes: [
-            { t: 'Session window', sub: 'hard daily cutoff', kind: 'gate' },
-            { t: 'Spread filter', sub: 'waits when spread is wide', kind: 'gate' },
-          ],
-        },
-        { nodes: [{ t: 'Setup qualification', sub: 'multi-stage filter · most days decline', kind: 'gate' }] },
-        {
-          nodes: [{ t: 'One qualified trade per day', sub: 'and none after a win', kind: 'gate' }],
-          note: 'The per-day cap is measured as the edge, not a safety feature bolted on.',
-        },
-        {
-          nodes: [
-            { t: 'Risk-sized order', sub: 'from risk % × actual stop distance', kind: 'proc' },
-            { t: 'Stop-loss at order time', sub: 'always, no exceptions', kind: 'proc' },
-          ],
-        },
-        {
-          nodes: [
-            { t: 'Break-even move', sub: 'once most of the way to target', kind: 'proc' },
-            { t: 'Trailing stop', kind: 'proc' },
-          ],
-        },
-      ],
-    }),
 
   evalLoop: () =>
     flow({
       id: 'eval',
       title: 'Adoption test applied to every candidate change',
       desc:
-        'Randomness is fixed first so runs are comparable, outcomes are measured per position rather than per platform record, and a change is adopted only if both halves of the split improve independently.',
+        'Randomness is fixed first so runs are comparable, outcomes are measured whole rather than per platform record, and a change is adopted only if both halves of the split improve independently.',
       rows: [
         { nodes: [{ t: 'Candidate change', kind: 'in' }] },
         {
@@ -327,10 +249,10 @@ export const diagrams = {
           ],
           note: 'The default execution-delay setting is random, which makes runs non-reproducible.',
         },
-        { nodes: [{ t: 'Simulate on real tick data', sub: 'interpolated bars are not evidence', kind: 'proc' }] },
+        { nodes: [{ t: 'Simulate on real recorded data', sub: 'interpolated data is not evidence', kind: 'proc' }] },
         {
-          nodes: [{ t: 'Measure per outcome', sub: 'pair partial closes back into positions', kind: 'proc' }],
-          note: 'The platform double-counts partial closes, which inflates its reported win rate.',
+          nodes: [{ t: 'Measure whole outcomes', sub: 'pair two-stage records back together', kind: 'proc' }],
+          note: 'The platform double-counts two-stage operations, inflating its reported success rate.',
         },
         {
           nodes: [
@@ -429,43 +351,6 @@ export const diagrams = {
       ],
     }),
 
-  course: () =>
-    flow({
-      id: 'course',
-      title: 'Course production pipeline',
-      desc:
-        'A lesson is a data file. Charts are generated from real historical data rather than drawn to suit the argument, and narration is transcribed back and compared to the script before anything is released.',
-      rows: [
-        {
-          nodes: [
-            { t: 'Lesson as a data file', sub: 'narration + visual directives', kind: 'in' },
-            { t: 'Real historical market data', kind: 'in' },
-          ],
-        },
-        {
-          nodes: [
-            { t: 'Speech synthesis', sub: 'one consistent narrator voice', kind: 'model' },
-            { t: 'Chart generation', sub: 'from the data, not for the argument', kind: 'proc' },
-          ],
-        },
-        {
-          nodes: [{ t: 'ASR verification against the script', kind: 'gate' }],
-          note: 'Catches synthesis dropouts and wrong takes that a human reviewer would miss by lesson four.',
-        },
-        { nodes: [{ t: 'Render & assemble', sub: 'narration-to-visual sync validated', kind: 'proc' }] },
-        {
-          nodes: [
-            { t: 'Thumbnail', kind: 'out' },
-            { t: 'PDF worksheet', kind: 'out' },
-            { t: 'Chapters & metadata', kind: 'out' },
-            { t: 'Vertical short', kind: 'out' },
-          ],
-        },
-        {
-          nodes: [{ t: 'Resumable publishing automation', sub: 'tracked state · no duplicate uploads', kind: 'out' }],
-        },
-      ],
-    }),
 };
 
 export function renderDiagram(key) {

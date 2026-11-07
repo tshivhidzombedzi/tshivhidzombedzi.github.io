@@ -7,8 +7,8 @@
  *    backtest rather than a real-world outcome, it says so in the same sentence.
  * 2. No completed-feature claims for unfinished work. Each case study carries an explicit
  *    `notBuilt` list and that list is rendered on the page, not hidden.
- * 3. No trading performance claims. The Apex case study deliberately contains no return,
- *    win-rate or profit figure, because those figures are simulated and he sells the product.
+ * 3. Private business activity is out of scope. No business, product, customer or sector
+ *    detail from private commercial work appears anywhere in this file.
  * 4. No invented screenshots. Where there is no asset, the page shows an authored
  *    architecture diagram instead, which is a description of a real system, not a mock-up.
  */
@@ -230,15 +230,15 @@ export const projects = [
     status: STATUS.beta,
     period: '2026 – present',
     role: 'Sole builder and product owner',
-    links: [{ label: 'hoshidub.com', url: 'https://hoshidub.com', note: 'Live product site' }],
+    links: [],
     oneLiner:
-      'A released, downloadable product with published pricing, built on local speech and language models.',
+      'A released Windows application built entirely on locally hosted speech and language models, with no network dependency at runtime.',
 
     metrics: [
-      { label: 'Released version', value: '0.1.0', note: 'Windows 10 / 11, 115 MB' },
-      { label: 'Pricing published', value: 'Free · $6.99/mo · $49/yr', note: 'A cloud tier is announced for 2027' },
-      { label: 'Processing location', value: '100% on-device', note: 'No account, no video recording' },
-      { label: 'Languages', value: '1 live, 4 announced', note: 'English now; ES, PT, HI, FR announced' },
+      { label: 'Released version', value: '0.1.0', note: 'Windows 10 / 11, 115 MB installed' },
+      { label: 'Models running locally', value: '3', note: 'Speech recognition, speech synthesis, language' },
+      { label: 'Processing location', value: '100% on-device', note: 'No account, no upload, no video recording' },
+      { label: 'Latency, primary path', value: '0 s', note: 'Achieved by scheduling, not faster inference' },
     ],
 
     overview: `Hoshidub watches a show alongside the viewer and speaks it in English in real time.
@@ -288,12 +288,12 @@ export const projects = [
     diagram: 'hoshidub',
 
     responsibilities: [
-      'Product definition, pricing structure and public positioning.',
+      'System design: the four hard constraints the application had to satisfy, fixed before any code was written.',
       'Architecture of the read-ahead synthesis scheduler that produces the zero-delay path.',
       'The dialogue-selective ducking approach that preserves music and effects.',
       'The spoiler-safety design for the companion, enforced structurally rather than by prompt.',
-      'Privacy and legal posture: on-device processing, no recording, no decryption, no account.',
-      'Marketing site, structured data, pricing page and support documentation.',
+      'Privacy posture as an architecture decision: on-device processing, no recording, no account.',
+      'Technical documentation and published support material.',
     ],
 
     process: [
@@ -307,7 +307,7 @@ export const projects = [
       },
       {
         title: 'Ship an honest 0.1.0',
-        body: 'The released version is labelled 0.1.0 with a GPU recommendation stated up front and the free tier capped at 30 minutes a day. A product page that overstates the hardware story produces refunds, not customers.',
+        body: 'The released version is labelled 0.1.0, with the GPU requirement stated up front rather than discovered after installation. Overstating the hardware story is how this class of application loses the users it has just acquired.',
       },
     ],
 
@@ -372,402 +372,19 @@ export const projects = [
         'Dialogue-selective ducking that preserves music and effects.',
         'Local AI companion with structural spoiler containment.',
         'Ad and tracker blocking, on-device processing, no account required.',
-        'Public product site with pricing, FAQ and structured data.',
       ],
       notBuilt: [
-        'The cloud tier. It is announced for 2027 and priced on the site, but not implemented — the page says "Coming 2027" and collects notification interest only.',
-        'Spanish, Portuguese, Hindi and French. Announced as planned; English is the only language live.',
-        'Any adoption, revenue or retention figures. I have not published user numbers and will not until there are audited ones to publish.',
+        'A hosted version for machines without a discrete GPU. Planned, not implemented.',
+        'Spanish, Portuguese, Hindi and French. Planned; English is the only language implemented.',
+        'Any adoption or usage figures. I have measured none, so I claim none.',
       ],
     },
 
     future: [
-      'Implement the announced cloud tier so the product works without a discrete GPU.',
-      'Add the four announced languages using official subtitle tracks in each language.',
-      'Publish measured latency and audio-separation figures as a technical page, so the claims are checkable by a buyer.',
+      'Implement the hosted path so the application works without a discrete GPU.',
+      'Add the four planned languages using official subtitle tracks in each language.',
+      'Publish measured latency and audio-separation figures, so the claims are checkable rather than asserted.',
       'Formal evaluation set for spoiler containment, scored rather than spot-tested.',
-    ],
-  },
-
-  // ─────────────────────────────────────────────────────────────────────────────
-  {
-    slug: 'mcp-labs',
-    meta:
-      'A live PHP storefront, licensing API with account binding and sharing detection, customer portal and beta programme, with real paying customers.',
-    title: 'MCP Labs',
-    subtitle: 'Independent technology lab, storefront and licensing platform',
-    tagline:
-      'The commercial operation behind my products: a live PHP storefront, a software licensing API with account binding and sharing detection, a customer portal, a free beta-testing programme and the business operations around them.',
-    category: 'Product Development & Operations',
-    featured: true,
-    order: 3,
-    status: STATUS.shipping,
-    period: '2025 – present',
-    role: 'Founder, developer and support',
-    links: [
-      { label: 'mcpautomation.io', url: 'https://mcpautomation.io', note: 'Live storefront' },
-      { label: 'Beta Lab', url: 'https://mcpautomation.io/beta', note: 'Free tester programme' },
-      { label: 'MQL5 verified seller', url: 'https://www.mql5.com/en/users/mbedzimz1/seller', note: 'Third-party marketplace profile' },
-    ],
-    oneLiner:
-      'A real storefront with real customers, a licensing API that commercial software depends on, and the operational work that comes with both.',
-
-    metrics: [
-      { label: 'Registered users', value: '23', note: 'Measured 16 Oct 2026. A small list, stated honestly.' },
-      { label: 'Holding a paid licence', value: '12', note: 'Same measurement date' },
-      { label: 'Domains in production', value: '8', note: 'All verified responding on 31 Oct 2026' },
-      { label: 'Server dependencies', value: '0 frameworks', note: 'PHP 8.3 + SQLite, no Composer' },
-    ],
-
-    overview: `MCP Labs is the entity my commercial work ships under. Practically it is a live
-      storefront on shared hosting that sells downloadable software, issues and validates licences,
-      runs a customer portal, publishes technical content for search, and handles the support that
-      follows a sale.
-
-      I want to be precise about scale, because a portfolio that implies otherwise is worthless: as
-      of the last measurement there were 23 registered users, 12 of whom hold a paid licence. It is a
-      small business. What makes it portfolio-relevant is not its size but that it is genuinely in
-      production — people have paid money, software in the field depends on the licensing API
-      responding, and when it breaks the support request comes to me.`,
-
-    problem: `Selling downloadable software alone means owning every part of the chain: the storefront,
-      payment, licence issuing, anti-sharing enforcement, the customer's self-service needs, the
-      documentation, discoverability in search, and support. Each of those has an off-the-shelf
-      service, and buying all of them for a business this size costs more than the business makes.
-
-      There is a second problem specific to software licensing. A licence has to be strict enough that
-      one purchase is not shared across a forum, and loose enough that a legitimate customer moving
-      between their own machines is never locked out or accused.`,
-
-    solution: `A deliberately small stack: PHP 8.3 with no framework, SQLite for storage, a single
-      front controller, and all application code outside the web root. No Composer, no build step, no
-      dependency upgrade treadmill on a shared host I do not fully control.
-
-      Licensing runs through one validation endpoint. On every check the client reports its broker,
-      server, account type, terminal build and a hashed machine identifier, which gives an admin view
-      of exactly which keys are running where, and makes sharing detectable without any second
-      protocol.
-
-      The free beta programme reuses that same mechanism rather than inventing a parallel one: a
-      volunteer tester is issued a genuine licence row against a hidden product with beta status. The
-      existing validation endpoint then does all the work, and a helper function excludes beta
-      products from the definition of "customer" so a volunteer is never mistaken for a buyer.`,
-
-    stack: [
-      { group: 'Server', items: ['PHP 8.3', 'SQLite', 'Shared hosting (Linux)', 'No framework, no Composer'] },
-      { group: 'Architecture', items: ['Single front controller', 'Application code outside web root', 'One-off migration scripts'] },
-      { group: 'Commerce', items: ['Card and crypto checkout', 'Licence issuing', 'Customer portal', 'Account binding'] },
-      { group: 'Discoverability', items: ['JSON-LD structured data', 'IndexNow submission', 'Sitemap management', 'Canonical consolidation'] },
-      { group: 'Operations', items: ['SSH deployment with retry', 'Timestamped file backups', 'Server-side lint gate'] },
-    ],
-
-    diagram: 'mcpLabs',
-
-    responsibilities: [
-      'Built and operate the storefront, customer portal and admin tooling.',
-      'Designed the licensing model: issuing, account binding, expiry, revocation and sharing detection.',
-      'Designed and built the Beta Lab tester programme on top of the existing licence primitives.',
-      'All customer support, including licence rebinding and installation help.',
-      'Product catalogue decisions, pricing and promotion mechanics.',
-      'Technical SEO: structured data, indexing, canonical strategy and content.',
-      'Deployment, backups and the operational discipline around a host I cannot fully trust.',
-    ],
-
-    process: [
-      {
-        title: 'Reuse the primitive instead of adding a protocol',
-        body: 'The beta programme could have been a separate system with its own keys and its own validation path. Issuing a real licence against a hidden product meant zero new surface area and zero new code in the field clients. Choosing not to build is a design decision.',
-      },
-      {
-        title: 'Back up before every edit, on a host with no version control',
-        body: 'Every file is copied to a dated, labelled backup before it is changed, and the server-side lint is run before anything is considered deployed. It is primitive compared with a proper pipeline and it is appropriate to the constraint.',
-      },
-      {
-        title: 'Write scripts that can be run twice',
-        body: 'The SSH connection to this host drops frequently, so every deployment and migration script is idempotent and wrapped in retries. A script that is only safe to run once is not safe on an unreliable link.',
-      },
-      {
-        title: 'Measure the live system, not the fixture',
-        body: 'Features that touch customer data are validated against the production database before being trusted. The reason is in the challenges below, and it was an expensive lesson.',
-      },
-    ],
-
-    challenges: [
-      {
-        title: 'Anti-sharing detection that accused my two best customers',
-        body: `The first version of the licence-sharing rule flagged any single trading account seen
-          against more than one licence key. It immediately flagged the two most valuable customers on
-          the list. They had done nothing wrong: they had bought three products each and were running
-          all of them on one account, which is exactly what a good customer looks like.
-
-          The rule now requires more than one distinct user before anything is flagged. The part worth
-          keeping is how it was caught — the test fixture passed happily, and the fault only appeared
-          when the detection was run against live data. A correctness test confirmed the code did what
-          I wrote; it could not tell me that what I wrote was the wrong rule.`,
-      },
-      {
-        title: 'A promotion that would have been a fake discount',
-        body: `The requirement was a Black Friday offer with prices unchanged. A sale banner over an
-          unchanged price is a misleading prior-price claim and is regulated — South African consumer
-          protection law and the equivalent UK and EU rules all treat it as an offence. Rather than
-          running it or simply refusing, I changed the mechanism: the promotion doubles the number of
-          machine seats on every licence sold in the window and the price genuinely does not change.
-          Customers get something real, the claim is true, and there is no prior-price problem. The
-          offer is live on the site in exactly that form.`,
-      },
-      {
-        title: 'Four pages competing for the same search result',
-        body: `The same live trading account had been written up four separate times, each page frozen
-          at whatever the balance was that week. They cannibalised each other's ranking and three of
-          them were permanently out of date by construction. I consolidated to a single evergreen URL
-          with no date in the slug, regenerated by one idempotent script, and redirected the strongest
-          of the old pages into it. Refreshing the figures is now editing one script and re-running it,
-          which is the only version of this that does not decay.`,
-      },
-      {
-        title: 'Infrastructure that lies to you',
-        body: `Three unglamorous production facts that cost real time. The CDN in front of the host
-          caches uploads for seven days with no purge available over SSH, so replacing an image in place
-          keeps serving the old bytes — new filenames are the only reliable fix. Page titles are
-          truncated to 60 characters after the site name is appended, so a title that looks fine in the
-          database renders cut mid-word. And three global stylesheets already define generic class names
-          like .card and .hero, so any new page must namespace its own classes or render half-broken.
-          None of it appears in any documentation.`,
-      },
-    ],
-
-    testing: [
-      {
-        title: 'Validation against production data',
-        body: 'Customer-facing rules are exercised against the live database before release, because the false-positive above proved fixtures insufficient.',
-      },
-      {
-        title: 'Server-side lint as a deployment gate',
-        body: 'No PHP runtime exists on my workstation, so the interpreter on the server is the only available check and it runs before anything is live.',
-      },
-      {
-        title: 'Live endpoint verification',
-        body: 'The licensing API is exercised against the real deployment, including binding, expiry and revocation paths — not only against a local stub.',
-      },
-      {
-        title: 'Rendered-output checks',
-        body: 'Titles, structured data and page markup are verified on the live URL, since truncation and stylesheet conflicts only appear once rendered.',
-      },
-    ],
-
-    statusDetail: {
-      built: [
-        'Live storefront with card and crypto checkout, in production with paying customers.',
-        'Licensing API with issuing, account binding, expiry, revocation and sharing detection.',
-        'Admin licence-control view showing which keys are active, on which terminal and broker.',
-        'Customer self-service portal including account rebinding.',
-        'Beta Lab free tester programme built on the existing licence primitives.',
-        'Structured data, indexing submission and canonical consolidation across 8 production domains.',
-      ],
-      notBuilt: [
-        'Cryptographic signing of licence responses. The client-side support is in place; completing it end to end is the remaining piece of the licensing work, which is why I list licence integrity as unfinished rather than done.',
-        'Grouping of indexing submissions by hostname. Submissions for the secondary domain are currently handled by a second explicit payload rather than properly fixed in the shared helper.',
-        'Any automated test suite or CI. Verification here is manual and scripted, not continuous.',
-      ],
-    },
-
-    future: [
-      'Complete the cryptographic signing work, so a licence response is signed as well as validated.',
-      'Replace the manual backup convention with real version control on the server.',
-      'Add cache-busting at the URL-generation layer rather than working around the CDN by renaming files.',
-      'Automate the parts of support that are currently me answering the same question.',
-    ],
-  },
-
-  // ─────────────────────────────────────────────────────────────────────────────
-  {
-    slug: 'apex-drawdown-zero',
-    meta:
-      'A commercial MT5 trading product presented for its engineering and testing discipline. It contains no performance claims, deliberately.',
-    title: 'Apex Drawdown Zero',
-    subtitle: 'Commercial automated trading product',
-    tagline:
-      'A MetaTrader 5 Expert Advisor sold as a licensed commercial product: strategy configuration, a disciplined testing methodology, version management, technical documentation and customer support.',
-    category: 'Product Development & Testing',
-    featured: true,
-    order: 4,
-    status: STATUS.shipping,
-    period: '2025 – present',
-    role: 'Developer, tester, documenter and support',
-    links: [
-      { label: 'apexdrawdownzero.com', url: 'https://apexdrawdownzero.com', note: 'Live product site' },
-      { label: 'Independently tracked account', url: 'https://www.myfxbook.com/portfolio/apex-drawdown-zero-live-200/11897367', note: 'Third-party verification — figures are not reproduced here' },
-    ],
-    oneLiner:
-      'A product I present for its engineering and testing discipline, not its returns — which is also how I present it to customers.',
-
-    disclaimer:
-      'This case study contains no performance, profitability or win-rate figures. All strategy results I hold are simulations, simulated results are not indicative of future performance, and I sell this product. The engineering and testing practice is the subject here. A live account is tracked by an independent third party and linked above for anyone who wants to inspect it directly.',
-
-    metrics: [
-      { label: 'Public version', value: 'v9.21', note: 'Version on the live product site' },
-      { label: 'Configuration presets', value: '4 + manual', note: 'Each independently verified to load exactly' },
-      { label: 'Supported symbols', value: '3', note: 'XAUUSD, EURUSD, EURJPY' },
-      { label: 'Changes rejected on evidence', value: 'documented', note: 'See the Verification page' },
-    ],
-
-    overview: `Apex Drawdown Zero is a trading automation product for MetaTrader 5. It takes at most
-      one qualified trade a day, always places a stop-loss at order time, sizes every position from a
-      fixed risk percentage and the actual stop distance, moves the stop to break-even once a trade
-      has run most of the way to target, restricts entries to a session window, and refuses to enter
-      when the spread is too wide. There is no grid and no martingale.
-
-      My work on it spans the whole product rather than only the strategy: the parameter presets, the
-      testing methodology that decides whether a change ships, build and rollback management, the
-      licensing integration, the prop-firm documentation, marketplace compliance, and the support that
-      follows every sale.`,
-
-    problem: `Two problems, and the second is the real one.
-
-      The surface problem is that most retail trading automation is built to produce an impressive
-      backtest. Grids and martingales do that reliably, right up until the account is gone, because
-      the drawdown is deferred rather than removed. A product that has to survive contact with a real
-      account needs the opposite bias: a hard stop on every position, fixed fractional sizing, and a
-      hard cap on activity.
-
-      The deeper problem is epistemic. Every number available to me about this strategy comes from a
-      simulation, and a simulation can be made to say almost anything. The genuine engineering
-      challenge is not finding a profitable configuration — it is building a testing discipline strict
-      enough that I can tell the difference between an improvement and a result I fitted by accident.`,
-
-    solution: `For the product: explicit, conservative mechanics, all of which are stated on the sales
-      page rather than hidden. One trade a day, a stop on every entry, risk-based sizing, break-even
-      management, session control, spread protection, an optional hard lot cap. Where the product
-      cannot do something — there is no built-in daily-loss halt and no prop-firm mode — the page says
-      so plainly, because a customer who discovers that after a failed challenge is a refund and a
-      complaint.
-
-      For the testing: a methodology with four non-negotiable rules, each of which exists because
-      breaking it once produced a wrong answer. Simulate on real tick data, never on interpolated bar
-      data. Split the period in half and require a change to improve both halves, not the total.
-      Measure outcomes per position, not per broker-reported trade. Fix the simulator's execution
-      delay, or runs are not reproducible and you are comparing noise. These are described in detail
-      on the Verification page, because that methodology is the transferable part of this work.`,
-
-    stack: [
-      { group: 'Implementation', items: ['MQL5', 'MetaTrader 5', 'Expert Advisor architecture'] },
-      { group: 'Testing', items: ['MT5 Strategy Tester (real-tick mode)', 'Split-half validation', 'Python analysis scripts'] },
-      { group: 'Product', items: ['Licence client integration', 'Account binding', 'Preset configuration system'] },
-      { group: 'Release', items: ['Checksum-stamped builds', 'Explicit rollback artefacts', 'Versioned presets'] },
-    ],
-
-    diagram: 'apex',
-
-    responsibilities: [
-      'Strategy implementation and the parameter preset system that makes it configurable without code.',
-      'The testing methodology that decides whether a change is adopted or rejected.',
-      'Build and release management: checksummed builds, kept rollback artefacts, versioned presets.',
-      'Technical documentation, including the honest prop-firm limitations page.',
-      'Marketplace compliance work for third-party distribution.',
-      'Licensing integration and all customer support.',
-    ],
-
-    process: [
-      {
-        title: 'Change one thing, measure it in both halves',
-        body: 'A candidate change is accepted only if it improves the in-sample and out-of-sample halves. Most do not. A change that improves the total while failing a half is a fitted result, and the total is what hides it.',
-      },
-      {
-        title: 'Prefer a plateau to a peak',
-        body: 'Where a parameter is adopted, I look for a range of neighbouring values that all pass, and take the middle of it. A value that only works when its neighbours do not is more likely noise than a finding.',
-      },
-      {
-        title: 'Verify the configuration loads as intended',
-        body: 'Each shipped preset is run and confirmed to reproduce its documented result to the cent. This caught a real discrepancy between two configuration paths that had been quietly disagreeing.',
-      },
-      {
-        title: 'Keep the rejections',
-        body: 'Rejected changes are recorded with the evidence that killed them, in the code at the relevant line. Three separate ideas in this product have been re-tested and re-rejected; the note is what stops a fourth attempt.',
-      },
-    ],
-
-    challenges: [
-      {
-        title: 'A whole day of results invalidated by one simulator setting',
-        body: `An entire session of parameter work — several sweeps and a set of adoption decisions —
-          was run with the simulator interpolating inside one-minute bars instead of using real tick
-          data. That matters enormously for this strategy, because its exits sit inside the bar: which
-          of the stop, the partial close or the trailing stop is touched first within a minute is
-          guessed rather than observed. Every conclusion from that session was marked unverified and
-          re-run. The rule is now absolute: real ticks, or it is not evidence.`,
-      },
-      {
-        title: 'The platform reports a win rate that is wrong for this product',
-        body: `Because the strategy closes part of a position early, one position produces two separate
-          records and the platform counts both. Its reported trade count and win rate are therefore
-          inflated, and the early partial close is a winner by construction. I now pair records back
-          into positions before measuring anything. This nearly cost a correct decision: the change I
-          eventually adopted moves the platform's reported winner count down while the real number of
-          winning positions goes up. Trusting the dashboard would have rejected an improvement.`,
-      },
-      {
-        title: 'A structurally appealing change that lost money',
-        body: `The strategy burns a trading day when a position is carried overnight, which looked like
-          a large recoverable constraint — well over a hundred lost opportunities. I implemented the fix
-          properly, verified the control reproduced exactly, and measured it: more trades, more winners,
-          and materially worse overall, failing both halves. The added trades won at roughly half the
-          base rate, because a day whose carried trade has just closed is a day the move already
-          happened. It was reverted and the reasoning is recorded at the relevant line of code.`,
-      },
-      {
-        title: 'The ceiling question, answered with numbers instead of optimism',
-        body: `Asked whether returns could be pushed several times higher, I measured the whole
-          risk frontier rather than arguing. The answer is that the apparently achievable extreme
-          requires position sizes that exceed the instrument's own volume ceiling — the simulation
-          silently clips them — alongside a drawdown that would take an account down to a small
-          fraction of its peak. It is reachable in a backtest and unreachable in reality, and it is
-          recorded in that form for a product I sell.`,
-      },
-    ],
-
-    testing: [
-      {
-        title: 'Real tick data only',
-        body: 'Simulations run against stored tick data covering the full test window. Interpolated bar modelling is treated as producing no evidence at all for this strategy.',
-      },
-      {
-        title: 'Split-half in-sample / out-of-sample',
-        body: 'Every candidate change must improve both halves independently. Improvement in the total with a failing half is treated as overfitting.',
-      },
-      {
-        title: 'Per-position measurement',
-        body: 'Platform records are paired back into positions before any outcome is counted, because partial closes double-count and inflate the reported win rate.',
-      },
-      {
-        title: 'Reproducibility control',
-        body: 'The simulator\'s execution-delay setting defaults to a random value, which makes runs non-reproducible. It is fixed explicitly before any comparison.',
-      },
-      {
-        title: 'Preset load verification',
-        body: 'Each shipped configuration is run and confirmed to reproduce its documented result exactly, which has already caught one silent configuration-path discrepancy.',
-      },
-    ],
-
-    statusDetail: {
-      built: [
-        'Commercial product on sale with licensing, account binding and instant delivery.',
-        'Four configuration presets plus manual control, each load-verified.',
-        'Core mechanics: one trade a day, mandatory stop-loss, risk-based sizing, break-even management, session control, spread protection.',
-        'Checksum-stamped builds with kept rollback artefacts for prior versions.',
-        'Technical documentation including an explicit statement of what the product does not do.',
-        'Marketplace compliance work for third-party distribution.',
-      ],
-      notBuilt: [
-        'A built-in daily-loss or maximum-drawdown halt. There is none, and the product page says so rather than implying a prop-firm safety net that does not exist.',
-        'Any verified forward-tested performance claim from me. The only third-party evidence is the independently tracked account linked above; I do not reproduce its figures.',
-        'Published real-tick confirmation of the most recent development builds. Those numbers exist only as bar-interpolated runs and are therefore marked unverified in my own records.',
-      ],
-    },
-
-    future: [
-      'Complete real-tick re-verification of the current development build before any of its parameters are considered settled.',
-      'Publish the testing methodology as customer-facing documentation, so a buyer can judge the process rather than only the marketing.',
-      'Automate the split-half adoption test so a change cannot be adopted without producing both halves.',
     ],
   },
 
@@ -781,8 +398,8 @@ export const projects = [
     tagline:
       'A desktop application in which an animated AI character hosts a live stream unattended — reading chat, choosing topics, reacting to what is on screen and controlling her own performance, with no operator pressing buttons.',
     category: 'AI Systems & Agents',
-    featured: false,
-    order: 5,
+    featured: true,
+    order: 3,
     status: STATUS.built,
     period: 'October 2026 – present',
     role: 'Sole builder',
@@ -956,8 +573,8 @@ export const projects = [
     tagline:
       'A dependency-free simulation of eight characters who hold private knowledge, remember what they are told, track who owes whom, lie, and vote — with a test that proves the AI code cannot read the ground truth it is supposed to deduce.',
     category: 'AI Systems & Agents',
-    featured: false,
-    order: 6,
+    featured: true,
+    order: 4,
     status: STATUS.delivered,
     period: 'October 2026',
     role: 'Sole builder',
@@ -1118,183 +735,6 @@ export const projects = [
     ],
   },
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  {
-    slug: 'course-pipeline',
-    meta:
-      'Thirty educational videos generated, fact-checked and published from source data, with narration verified automatically by speech recognition.',
-    title: 'Automated course production pipeline',
-    subtitle: 'Thirty educational videos built, fact-checked and published from source data',
-    tagline:
-      'A pipeline that turns a written lesson into a finished narrated video with charts, chapters, a thumbnail, a PDF worksheet, a vertical short and publication metadata — then verifies the narration against the script before it is allowed out.',
-    category: 'AI Workflow Automation',
-    featured: false,
-    order: 7,
-    status: STATUS.delivered,
-    period: 'October 2026',
-    role: 'Sole builder, writer and fact-checker',
-    links: [
-      { label: 'MCP LABS FOREX', url: 'https://www.youtube.com/@KidosExpertsTrading', note: 'Publishing channel' },
-    ],
-    oneLiner:
-      'Thirty lessons and thirty shorts, all generated, verified and scheduled — and the most valuable part was catching my own charts teaching the wrong lesson.',
-
-    metrics: [
-      { label: 'Lessons produced', value: '30', note: 'Plus 30 vertical shorts' },
-      { label: 'Runtime per lesson', value: '6:31 – 9:42', note: 'Verified per output' },
-      { label: 'Artefacts per lesson', value: '6', note: 'Video, short, thumbnail, PDF sheet, metadata, chapters' },
-      { label: 'Narration verification', value: 'Automated', note: 'Speech recognition against the written script' },
-    ],
-
-    overview: `A complete course had to be produced by one person: thirty lessons of eight to twelve
-      minutes, each with narration, charts built from real market data, chapter markers, a question
-      section, a thumbnail, a printable worksheet, a vertical short cut from the hook, and publication
-      metadata.
-
-      The pipeline makes a lesson a data file. A build command synthesises the narration, verifies it
-      by speech recognition against the written script, renders the visuals, generates every secondary
-      artefact and writes a finished folder. Thirty lessons went through it and were scheduled for
-      release across ten weeks.`,
-
-    problem: `Producing thirty videos by hand is roughly a month of full-time work and the thirtieth
-      will not match the first. Consistency is the actual deliverable in a course — same voice, same
-      visual language, same structure — and consistency is what a human doing repetitive work loses
-      first.
-
-      There is a second problem that turned out to matter more. This is educational material about
-      financial risk. A chart that is technically accurate and pedagogically backwards does real harm
-      to someone who believes it.`,
-
-    solution: `A content pipeline with a verification stage, plus an editorial rule that every number
-      is computed before it is written.
-
-      Each lesson is a data file describing narration and visuals. Visuals are generated from real
-      historical market data rather than drawn to illustrate a point, which means a chart cannot flatter
-      the argument it is supporting. Narration is synthesised with a consistent local voice, and then —
-      this is the stage that earns its place — transcribed back by speech recognition and compared to
-      the source script, so a synthesis dropout or a wrong take is caught automatically rather than by
-      someone watching all thirty videos.
-
-      Publication is automated by driving the publishing interface directly rather than through the
-      platform API, because an unverified API project forces every upload private, which would have
-      made the automation useless.`,
-
-    stack: [
-      { group: 'Generation', items: ['Python', 'Kokoro TTS', 'Matplotlib-style chart generation', 'ffmpeg'] },
-      { group: 'Verification', items: ['Speech recognition narration check', 'Duration and sync validation'] },
-      { group: 'Data', items: ['Real historical market data', 'Computed figures only'] },
-      { group: 'Publishing', items: ['Browser automation over the DevTools protocol', 'Idempotent upload state'] },
-    ],
-
-    diagram: 'course',
-
-    responsibilities: [
-      'Built the lesson build pipeline and every generator in it.',
-      'Wrote and fact-checked all thirty lesson scripts.',
-      'Built the narration verification stage.',
-      'Built the publishing automation and the state tracking that makes it resumable.',
-      'Caught and corrected the pedagogical and factual errors described below.',
-    ],
-
-    process: [
-      {
-        title: 'One lesson end to end first',
-        body: 'A single lesson taken all the way to a finished folder before any attempt at thirty, which is what exposed the structural problems while they were cheap.',
-      },
-      {
-        title: 'Compute every number before writing it',
-        body: 'No figure goes into a script from memory or estimate. Each one is derived from the data first. This rule is why the two errors below were caught at all.',
-      },
-      {
-        title: 'Verify narration automatically',
-        body: 'Machine transcription against the source script. A human reviewer watching thirty videos for synthesis faults will miss some, and will be bored by lesson four.',
-      },
-      {
-        title: 'Make publication resumable',
-        body: 'Upload state is tracked so an interrupted run continues rather than duplicating. Thirty videos plus thirty shorts is too many for a process that cannot be restarted.',
-      },
-    ],
-
-    challenges: [
-      {
-        title: 'A chart that was accurate and taught the opposite of the lesson',
-        body: `The lesson was about position sizing. The chart plotted account balance over the same
-          trade sequence at a high risk setting and a low one, and because the sequence was net
-          profitable, the high-risk line finished higher. Every number on it was correct. What a viewer
-          took from it was that more risk is better, which is the precise opposite of the lesson and
-          genuinely dangerous advice.
-
-          The fix was to change the measure: plot drawdown from peak instead of balance, so the chart
-          shows what the risk setting actually costs you. Technically correct content can be pedagogically harmful, and that
-          failure is invisible to any factual check — you only catch it by asking what someone would
-          conclude, which is exactly the question content evaluation exists to ask.`,
-      },
-      {
-        title: 'A figure I had estimated instead of computed',
-        body: `A script cited a loss-streak figure that was roughly 60% off the real one, because it
-          had been reasoned about rather than measured. It was caught by the compute-everything rule and
-          corrected. Worth stating plainly because it is the ordinary failure mode of content work: the
-          wrong number was plausible, nobody would have questioned it, and it was wrong.`,
-      },
-      {
-        title: 'The platform API was the wrong tool',
-        body: `The official publishing API locks uploads from unverified projects to private
-          visibility, which would have meant manually publishing sixty items. Driving the publishing
-          interface through browser automation was the approach that actually worked. It is more
-          fragile, so the selectors are narrowly scoped, each item gets a fresh context, and the run
-          confirms the published state rather than assuming it.`,
-      },
-      {
-        title: 'Honest length over padded length',
-        body: `Several lessons came in under the duration that unlocks extra advertising slots. Padding
-          them was available and obvious. They shipped short, because padding a free lesson to earn a
-          mid-roll is a tax on the student, and the course exists to be trusted.`,
-      },
-    ],
-
-    testing: [
-      {
-        title: 'Automated narration verification',
-        body: 'Speech recognition transcript compared against the source script for every lesson.',
-      },
-      {
-        title: 'Narration-to-visual sync validation',
-        body: 'Checked per lesson so a chart appears when it is being discussed, not thirty seconds later.',
-      },
-      {
-        title: 'Figure derivation review',
-        body: 'Every quoted number traced back to the data it came from before the script was accepted.',
-      },
-      {
-        title: 'Artefact completeness check',
-        body: 'Each finished lesson folder verified to contain all six required deliverables.',
-      },
-    ],
-
-    statusDetail: {
-      built: [
-        'All thirty lessons built, verified and published on schedule across ten weeks.',
-        'Thirty vertical shorts cut from the lesson hooks.',
-        'Per-lesson thumbnail, PDF worksheet, chapter markers and publication metadata.',
-        'Automated narration verification by speech recognition.',
-        'Resumable publishing automation with tracked state.',
-        'A structured course playlist with all thirty lessons in order.',
-      ],
-      notBuilt: [
-        'Hosting for the PDF worksheets. The descriptions reference them and they need a stable home.',
-        'Pinned question comments, which remain manual.',
-        'The final case-study lesson, which should be rebuilt once more months of real data exist.',
-        'Any measured learning outcome. I know the videos were produced and published; I do not claim they taught anyone anything.',
-      ],
-    },
-
-    future: [
-      'Add a pedagogical review stage to the pipeline — an explicit check on what a viewer would conclude, not only on whether the facts are right.',
-      'Host the worksheets properly and link them from the descriptions.',
-      'Rebuild the final lesson with a longer data window.',
-      'Measure retention per lesson and feed it back into the structure.',
-    ],
-  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured).sort((a, b) => a.order - b.order);

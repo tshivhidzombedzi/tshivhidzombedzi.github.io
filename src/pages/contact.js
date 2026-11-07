@@ -8,7 +8,8 @@ import profile from '../data/profile.js';
  * dependency, a privacy policy obligation and a thing that silently breaks. A mailto link
  * always works and he will actually receive the mail. Recruiters email; they do not fill in forms.
  *
- * Phone number and GitHub are deliberately absent — see docs/QUESTIONS.md Q1 and Q2.
+ * Phone number and GitHub are deliberately absent. Private business addresses and properties
+ * are excluded entirely: this portfolio is for employment, not for advertising them.
  */
 export default function contact() {
   const channels = [
@@ -25,13 +26,6 @@ export default function contact() {
       href: profile.contact.linkedin,
       note: 'Connect or message directly.',
       primary: true,
-    },
-    {
-      k: 'MQL5',
-      v: 'Verified seller profile',
-      href: profile.contact.mql5,
-      note: 'Third-party marketplace profile for the trading product.',
-      primary: false,
     },
   ];
 
@@ -120,7 +114,7 @@ ${section({
     </article>
     <article class="card">
       <h3>Verification of claims</h3>
-      <p>Three of my sites are live and linked from the case studies, my qualifications are verifiable with the institutions, and the marketplace seller profile is third-party. Please check any of it.</p>
+      <p>My qualifications are verifiable directly with IIE Rosebank College and UNISA, and the produced episode work is public and linked from its case study. Please check any of it.</p>
     </article>
   </div>`,
 })}

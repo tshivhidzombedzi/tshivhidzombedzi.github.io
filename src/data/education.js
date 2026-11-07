@@ -37,7 +37,7 @@ export const education = [
     note:
       'A single NQF level 8 module passed with distinction, not a full qualification — stated that way deliberately.',
     relevance:
-      'My strongest academic result, and the origin of the privacy-by-design and licensing decisions documented in the case studies.',
+      'My strongest academic result, and the origin of the privacy-by-design decisions documented in the case studies — processing kept on the user device, no account, nothing transmitted.',
   },
   {
     qualification: 'Google Analytics Individual Qualification',
@@ -50,7 +50,7 @@ export const education = [
     result: 'Certified',
     note: 'Measurement, reporting and analysis in Google Analytics.',
     relevance:
-      'Applied directly to the technical SEO and traffic work on the MCP Labs properties.',
+      'Applied directly to the technical SEO and structured-data work on this site.',
   },
   {
     qualification: 'CS50 AI with Python (CS50AI)',

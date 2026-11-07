@@ -1,131 +1,113 @@
 /**
  * CV content — single source of truth.
  *
- * Used by BOTH the /cv/ page and tools/make-cv.js (which writes the .docx and .md). One
- * source means the downloadable CV can never drift from the published one, which is a real
- * failure mode when a recruiter has the file and the hiring manager is reading the site.
+ * Used by BOTH the /cv/ page and tools/make-cv.js (which writes the .docx and .md). One source
+ * means the downloadable CV can never drift from the published one, which is a real failure
+ * mode when a recruiter has the file and the hiring manager is reading the site.
  *
  * ATS RULES OBSERVED
  * - Standard section headings ("Professional Experience", "Education", "Skills"). Parsers look
  *   for these exact kinds of words; creative headings get dropped.
- * - No tables, no text boxes, no columns, no headers/footers, no graphics in the .docx. All four
- *   of those are routinely mangled or skipped by applicant tracking systems.
- * - Reverse-chronological order.
- * - Keywords in real sentences, not a hidden block.
- * - Dates as plain "Month Year – Month Year".
+ * - No tables, no text boxes, no columns, no headers/footers, no graphics in the .docx. All
+ *   four are routinely mangled or skipped by applicant tracking systems.
+ * - Reverse-chronological order. Keywords in real sentences, not a hidden block.
  *
  * HONESTY RULES OBSERVED
- * - Every role title below is self-employed/independent and labelled as such. No invented employer.
- * - CS50 AI is excluded from Education entirely (not verified complete) and appears only under
- *   "Continuing Professional Development" marked in progress.
- * - No trading performance figures anywhere.
+ * - Every role is independent and self-employed, and labelled as such. No invented employer.
+ * - CS50 AI is excluded from Education entirely (completion not verified) and appears only
+ *   under Continuing Professional Development, marked in progress.
+ *
+ * PRIVACY, 8 November 2026
+ * - Private business activity is out of scope for this document: no business name, product
+ *   name, customer, revenue or sector detail. Work history is presented as independent
+ *   technical projects, which is what it is.
  */
 
 import profile from './profile.js';
 
 export const cv = {
   name: profile.name,
-  headline: 'AI & Technology Specialist — AI Evaluation, Generative AI, Workflow Automation',
+  headline: 'AI & Technology Specialist — AI Evaluation, Generative AI, IT Support',
   location: `${profile.location.city}, ${profile.location.country}`,
   availability: 'Available immediately · Open to fully remote roles worldwide',
   contactLine: [profile.contact.email, profile.contact.linkedinLabel, `${profile.location.city}, South Africa`],
 
-  summary: `Independent technology builder with a verifiable record of shipping AI products: two
-released Windows desktop applications built on local speech and language models, a live commercial
-platform with paying customers and a software licensing API in production, and fifty published
-videos produced by automation pipelines I designed. Formally qualified in IT support services, with
-a distinction at NQF level 8 in Information Security.
+  summary: `Independent technology builder with a verifiable record of shipping AI software: two
+released Windows desktop applications built on locally hosted speech and language models, and
+twenty 4K animated episodes produced end to end by a production pipeline I designed and operate.
+Formally qualified in IT support services, with a distinction at NQF level 8 in Information
+Security.
 
 My core strength is evaluation discipline. I use held-out validation, I verify the measuring
 instrument before trusting a result, and I have repeatedly discarded my own conclusions when the
-measurement turned out to be invalid — including a full session of parameter work invalidated by one
-simulation setting, and a success metric supplied by the platform itself that was wrong for my
-system. I build software with AI assistants and I state that plainly rather than implying unaided
-authorship.
+measurement turned out to be invalid — including a full session of parameter work invalidated by
+a single simulator setting, and a platform-reported success metric that was wrong for the system
+it was measuring. I build software with AI assistants and state that plainly rather than implying
+unaided authorship.
 
-Seeking AI quality evaluation, AI training, AI operations or technical support work where
-measurement rigour and product ownership are the job.`,
+Seeking AI quality evaluation, AI training, AI operations or IT support work where measurement
+rigour and operational ownership are the job.`,
 
   experience: [
     {
-      title: 'Founder & Technology Builder (Independent)',
-      org: 'MCP Labs',
-      location: 'Pretoria, South Africa (remote)',
-      from: '2025',
-      to: 'Present',
-      context:
-        'Independent technology and digital product venture. Sole responsibility for development, testing, operations, documentation and customer support.',
-      bullets: [
-        'Built and operate a live commercial storefront on PHP 8.3 and SQLite with no framework, serving a customer base of 23 registered users of whom 12 hold paid licences (measured October 2026).',
-        'Designed and operate a software licensing API in production — issuing, validation, account binding, expiry, revocation and sharing detection — which commercial software in the field depends on for startup validation.',
-        'Identified and corrected a licence-sharing detection rule that produced false positives against the two highest-value customers; established validation against production data as mandatory after the test fixture passed while the rule was wrong.',
-        'Restructured a promotional campaign from a price-based discount to a genuine product bonus after identifying consumer-protection exposure in misleading prior-price claims under South African, UK and EU rules.',
-        'Consolidated four competing published pages covering the same subject into a single evergreen URL regenerated by one idempotent script, resolving self-cannibalisation in search results.',
-        'Implemented technical SEO across eight production domains: JSON-LD structured data, indexing submission, sitemap management and canonical strategy.',
-        'Provide all customer support: installation, licence rebinding, configuration and fault resolution for paying customers.',
-        'Operate all infrastructure over SSH on Linux shared hosting with idempotent deployment scripts, timestamped backups before every change, and a lint gate before release.',
-      ],
-      keywords: 'PHP, SQLite, Linux, SSH, REST API, licensing, technical SEO, JSON-LD, customer support',
-    },
-    {
       title: 'AI Product Developer (Independent)',
-      org: 'Hoshidub & Hoshi Nova — MCP Labs',
+      org: 'Independent AI & Technology Projects',
       location: 'Pretoria, South Africa (remote)',
       from: '2026',
       to: 'Present',
       context:
-        'Two desktop AI applications taken from concept to public release, built on locally hosted speech and language models.',
+        'Two desktop AI applications taken from concept to public release, built on locally hosted speech and language models. Sole responsibility for architecture, implementation, testing and documentation.',
       bullets: [
-        'Released Hoshidub (version 0.1.0, Windows 10/11): real-time AI dubbing that assigns a distinct synthetic voice to each character in a video, with published tiered pricing and all processing performed on the user device.',
-        'Solved the real-time latency requirement as a scheduling problem rather than an inference-speed problem, pre-synthesising each line against known subtitle cue times so output is on cue by construction.',
-        'Implemented dialogue-selective audio ducking to measurable targets — original dialogue attenuated approximately 15 dB while music and effects remain within approximately 2 dB — rather than reducing the whole mix.',
-        'Designed spoiler containment for an LLM companion feature as an architectural guarantee, restricting the model context to content already played, rather than as a prompt instruction that could be circumvented.',
-        'Established the product privacy posture as an architecture decision: on-device processing, no account, no video recording, nothing transmitted.',
-        'Built Hoshi Nova, an animation production platform that produced 20 episodes across two seasons at verified 3840×2160 resolution, running unattended from structured episode data.',
-        'Implemented an automated delivery gate measuring resolution, frame rate and audio level, with speech-recognition verification of narration against script, that restores the previous output on failure rather than shipping.',
-        'Diagnosed and corrected systemic animation defects found by automated geometry scanning — 61 of 70 clips contained limb-through-body intersection invisible at playback speed.',
+        'Released a Windows application (version 0.1.0) performing real-time AI dubbing of video, assigning a distinct synthetic voice to each speaker, with all speech recognition, speech synthesis and language-model inference running on the user device.',
+        'Solved the real-time latency requirement as a scheduling problem rather than an inference-speed problem, pre-synthesising each line against known subtitle cue times so output lands on cue by construction rather than by optimisation.',
+        'Implemented dialogue-selective audio ducking to measurable targets — original dialogue attenuated by approximately 15 dB while music and effects remain within approximately 2 dB — instead of reducing the whole mix.',
+        'Designed spoiler containment for a language-model companion feature as an architectural guarantee: the model context contains only content already played, so it cannot reveal what is coming. A prompt instruction would have been circumvented on the first day.',
+        'Established the privacy posture as an architecture decision rather than a policy statement: on-device processing, no account, no recording, nothing transmitted.',
+        'Built an animation production platform that produced 20 episodes across two seasons at verified 3840x2160 resolution, running unattended from structured episode data.',
+        'Implemented an automated delivery gate measuring resolution, frame rate and audio level, with speech-recognition verification of narration against script, which restores the previous output on failure rather than shipping.',
+        'Diagnosed systemic animation defects using automated geometry scanning after they had passed human review: 61 of 70 clips contained limb-through-body intersection invisible at playback speed.',
       ],
       keywords:
         'Electron, Node.js, Python, generative AI, LLM applications, ASR, TTS, speech recognition, speech synthesis, ffmpeg, Unreal Engine, Blender, GPU',
     },
     {
-      title: 'Product Developer, Tester & Support (Independent)',
-      org: 'Apex Drawdown Zero — MCP Labs',
-      location: 'Pretoria, South Africa (remote)',
-      from: '2025',
-      to: 'Present',
-      context:
-        'Commercial trading automation product sold under licence. Responsible for implementation, test methodology, release management, documentation and support. Verified seller on a third-party software marketplace.',
-      bullets: [
-        'Established a formal adoption test for every candidate change: split-half in-sample and out-of-sample validation requiring independent improvement in both halves, which rejected the majority of candidate changes.',
-        'Determined that the platform\'s own reported success metric was invalid for this system because partial position closes are double-counted, and rebuilt measurement at position level — the adopted change moved the platform figure down while the true figure rose.',
-        'Discarded a full session of parameter results after identifying that the simulation had used interpolated bar data rather than real tick data, and established real-tick simulation as a non-negotiable condition of evidence.',
-        'Implemented, measured and reverted a structurally appealing change that increased both trade count and winner count while performing materially worse, documenting the reasoning at the relevant line of code.',
-        'Quantified the product\'s realistic performance ceiling by measuring the full risk frontier, establishing that the apparently achievable extreme requires position sizes exceeding the instrument\'s own volume limit — and documented that finding for a product I sell.',
-        'Maintain release discipline: checksum-stamped builds, retained rollback artefacts for prior versions, versioned configuration presets each verified to reproduce documented results exactly.',
-        'Authored customer-facing documentation including explicit statements of product limitations, and completed third-party marketplace compliance work.',
-      ],
-      keywords:
-        'MQL5, software testing, test methodology, validation, out-of-sample testing, reproducibility, release management, technical documentation',
-    },
-    {
-      title: 'Content Pipeline Developer & Technical Reviewer (Independent)',
-      org: 'MCP Labs',
+      title: 'AI Systems & Simulation Projects (Independent)',
+      org: 'Independent AI & Technology Projects',
       location: 'Pretoria, South Africa (remote)',
       from: '2026',
       to: '2026',
       context:
-        'Designed and operated an automated pipeline producing a 30-lesson educational video course, and acted as its sole technical and factual reviewer.',
+        'Two self-directed engineering projects built to work out specific techniques: an autonomous agent loop, and a deterministic multi-agent simulation with an enforced information boundary.',
       bullets: [
-        'Produced and published 30 lessons and 30 vertical short-form videos, each with six deliverables — video, short, thumbnail, PDF worksheet, chapter markers and publication metadata — scheduled across ten weeks.',
-        'Built automated content verification: synthesised narration transcribed by speech recognition and compared against source script before release, catching synthesis faults a human reviewer would miss at volume.',
-        'Identified and corrected a chart that was factually accurate and pedagogically inverted — plotting balance rather than drawdown made a high-risk setting appear preferable, the opposite of the lesson — and added a review stage asking what a viewer would conclude rather than only whether facts were correct.',
-        'Established a compute-before-you-write rule for every quoted figure, which caught a cited statistic that was materially wrong because it had been estimated rather than measured.',
-        'Chose browser-based publishing automation over the platform API after determining the API forced unverified projects to private visibility, and made the process resumable with tracked state.',
-        'Declined to pad lesson durations to qualify for additional advertising slots.',
+        'Built an autonomous presenter application in which an animated character hosts a live session unattended — reading chat, deciding when to respond and when to stay silent, opening new topics, and reacting to on-screen video — with language, speech-synthesis and speech-recognition models all running locally.',
+        'Designed the director loop so the language model is one input to a decision rather than the decision-maker, and added a register filter that rejects assistant phrasing before it reaches speech synthesis.',
+        'Built operator safety controls before any audience existed: emergency stop, moderation with a blocked-term list, and per-viewer data removal.',
+        'Set a simulated-audience feature to be off by default and reachable only through an explicit environment flag, after it displayed fabricated activity during a real session. A development convenience that fabricates data must be structurally impossible to leave enabled.',
+        'Built a dependency-free simulation engine for eight agents holding private knowledge with full provenance, covered by 38 automated tests runnable with a single command.',
+        'Enforced the simulation\'s integrity with an automated test that fails the build if agent-reasoning code accesses the hidden ground truth it is meant to deduce — the same class of control as keeping a model away from its test set.',
+        'Identified and fixed a determinism defect in which consecutive seeds produced correlated runs, invalidating batch measurements that had looked entirely reasonable.',
       ],
       keywords:
-        'content evaluation, quality assurance, fact-checking, editorial review, Python, automation, ASR verification',
+        'AI agents, autonomous systems, local LLM, multi-agent simulation, deterministic testing, automated testing, JavaScript, Node.js',
+    },
+    {
+      title: 'Technical Writing & Web Engineering (Independent)',
+      org: 'Independent AI & Technology Projects',
+      location: 'Pretoria, South Africa (remote)',
+      from: '2026',
+      to: 'Present',
+      context:
+        'Design, build and documentation of this portfolio: a zero-dependency static site generator and the supporting toolchain.',
+      bullets: [
+        'Built an 18-page static site from scratch in Node with no runtime dependencies, no framework and no web fonts, producing plain HTML, CSS and JavaScript that deploys to any host.',
+        'Wrote an automated verification gate that fails the build on broken internal links, missing or duplicate page headings, images without alternative text, absent canonical URLs or leftover placeholder text, and wired it into continuous deployment so a failed check keeps the previous version live.',
+        'Generated an ATS-compatible .docx directly as WordprocessingML, zipped with the standard library, verified to contain no tables, text boxes, drawings or column definitions — the structures applicant tracking systems most reliably mangle.',
+        'Implemented accessibility fundamentals: semantic landmarks, one heading hierarchy per page, keyboard-operable navigation with correct ARIA state, visible focus, described diagrams and reduced-motion support.',
+        'Implemented technical SEO: JSON-LD structured data, canonical URLs, Open Graph metadata, a generated sitemap and robots.txt, with title and description lengths verified automatically.',
+        'Audited the repository before publication, identified server credentials in a file about to be made public, removed them and rewrote them out of version-control history.',
+      ],
+      keywords:
+        'HTML, CSS, JavaScript, Node.js, accessibility, WCAG, technical SEO, JSON-LD, technical documentation, CI/CD, Git',
     },
   ],
 
@@ -162,7 +144,7 @@ measurement rigour and product ownership are the job.`,
     {
       item: 'Structured 12-step technical roadmap toward AI engineering, each step completed by producing a verified artefact rather than by completing a course',
       date: 'Ongoing',
-      status: 'Python fundamentals, Git/GitHub collaboration, API development, LLM architecture and evaluation methodology currently active',
+      status: 'Python fundamentals, Git and collaborative workflow, API development, LLM architecture and evaluation methodology currently active',
     },
   ],
 
@@ -175,35 +157,35 @@ measurement rigour and product ownership are the job.`,
     {
       group: 'Testing, Evaluation & Quality Assurance',
       items:
-        'Experimental design; held-out and split-half validation; measurement-instrument validation; automated verification gates; content and factual review; reproducibility discipline; regression and rollback practice; adversarial testing.',
+        'Experimental design; held-out and split-half validation; measurement-instrument validation; automated verification gates; content and factual review; testing against real data rather than fixtures; reproducibility discipline; regression and rollback practice; adversarial testing.',
     },
     {
       group: 'Information Technology',
       items:
-        'IT support fundamentals; systematic troubleshooting and root-cause analysis; technical documentation; software testing; Linux server operation over SSH; Windows and GPU workstation operations; systems thinking.',
+        'IT support fundamentals; systematic troubleshooting and root-cause analysis; technical documentation; software testing; Windows and GPU workstation operations; long unattended job scheduling; systems thinking.',
     },
     {
       group: 'Information Security',
       items:
-        'Information security fundamentals (NQF 8, distinction); privacy-by-design architecture; software licensing and anti-abuse enforcement; credential and secret handling; risk assessment concepts.',
+        'Information security fundamentals (NQF 8, distinction); privacy-by-design architecture; credential and secret handling; risk assessment concepts.',
     },
     {
-      group: 'Product Development & Operations',
+      group: 'Product & Delivery',
       items:
-        'Digital product development; customer support; product version management; honest product communication; technical SEO and structured data; product research and requirements definition; pricing and commercial mechanics.',
+        'Digital product development; honest product communication; technical SEO and structured data; product research and requirements definition.',
     },
     {
       group: 'Technical (used in shipped work, with AI assistance)',
       items:
-        'JavaScript and Node.js; HTML, CSS and accessible markup; Python; PHP; MQL5; Electron; SQLite; ffmpeg; Unreal Engine and Blender scripting; Git (local); Linux and SSH.',
+        'JavaScript and Node.js; HTML, CSS and accessible markup; Python; Electron; ffmpeg; Unreal Engine and Blender scripting; Git.',
     },
   ],
 
-  statement: `I build software with AI assistants and I verify every result before claiming it. I am
-not presenting unaided programming experience, and I will describe my working method the same way in
-an interview as I do here. What I can demonstrate is the ability to take a vague requirement, turn it
-into a system with defined boundaries, build it, find the faults in it — including faults in my own
-measurements — and ship something people pay for and use.`,
+  statement: `I build software with AI assistants and I verify every result before claiming it. I
+am not presenting unaided programming experience, and I will describe my working method the same
+way in an interview as I do here. What I can demonstrate is the ability to take a vague
+requirement, turn it into a system with defined boundaries, build it, find the faults in it —
+including faults in my own measurements — and ship something that works.`,
 
   referees: 'Available on request.',
 };

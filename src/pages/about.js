@@ -66,8 +66,8 @@ export default function about() {
     },
     {
       when: '2025',
-      what: 'MCP Labs becomes a real commercial operation',
-      d: 'A storefront, a licensing API, paying customers, and the support obligation that comes with both.',
+      what: 'First independent software projects shipped',
+      d: 'The year I stopped studying technology and started operating it: real systems, running unattended, that had to keep working.',
     },
     {
       when: '2026',
@@ -83,9 +83,9 @@ export default function about() {
     <h1>I build real products with AI, and I am precise about what that means.</h1>
     <p class="page-lead">
       Independent technology builder in ${esc(profile.location.city)}, ${esc(profile.location.country)}.
-      Two released desktop applications, a live commercial platform with paying customers, and
-      fifty published videos produced by pipelines I built. All of it with AI assistants as my
-      engineering partner.
+      Two released desktop applications built on locally hosted AI models, and twenty 4K animated
+      episodes produced by a pipeline I built. All of it with AI assistants as my engineering
+      partner.
     </p>
   </div>
 </section>

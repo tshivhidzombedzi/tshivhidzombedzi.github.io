@@ -18,7 +18,7 @@ export const site = {
   // Checked available on 2026-11-07 and chosen as the recommended domain: his own full
   // name, which is the right shape for a job search. REGISTER IT, then set
   // `baseUrlConfirmed: true` below. If you would rather not buy a domain,
-  // `moss.mcpautomation.io` is free, already yours, and needs one DNS record.
+  // A subdomain of a domain you already own is a free alternative and needs one DNS record.
   baseUrl: (envUrl || 'https://tshivhidzombedzi.com').replace(/\/$/, ''),
 
   // The build warns on every run until this is true. It exists because deploying with the

@@ -142,11 +142,17 @@ async function checkHtml(file, html) {
 
   /* ---- placeholders ---- */
   const body = html.replace(/<!--[\s\S]*?-->/g, '');
-  for (const bad of ['lorem ipsum', 'TODO', 'FIXME', 'XXX', 'PLACEHOLDER']) {
-    if (body.toLowerCase().includes(bad.toLowerCase())) {
-      fail(rel, `unresolved placeholder text: "${bad}"`);
-    }
+  // Case-SENSITIVE for the code conventions: these markers are written in capitals when they
+  // are real placeholders. Matching case-insensitively flagged the phrase "leftover
+  // placeholder text" in ordinary prose, which is a false positive and exactly the kind of
+  // over-matching that trains people to ignore their own checker.
+  for (const bad of ['TODO', 'FIXME', 'XXX', 'PLACEHOLDER']) {
+    if (body.includes(bad)) fail(rel, `unresolved placeholder marker: "${bad}"`);
   }
+  // Bracketed template slots that were never filled in, e.g. [YOUR EMAIL].
+  const slot = body.match(/\[[A-Z][A-Z _-]{3,40}\]/);
+  if (slot) fail(rel, `unfilled template slot: "${slot[0]}"`);
+  if (/lorem ipsum/i.test(body)) fail(rel, 'placeholder copy: "lorem ipsum"');
 
   /* ---- ids for anchor checking ---- */
   const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));

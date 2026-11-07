@@ -18,7 +18,7 @@ export default function home() {
     { n: '2', label: 'desktop products released', note: 'Hoshidub, Hoshi Nova' },
     { n: '20', label: 'animated episodes produced', note: 'Two seasons, verified 4K' },
     { n: '30', label: 'course videos published', note: 'Built and verified by pipeline' },
-    { n: '8', label: 'production domains operated', note: 'Live, with paying customers' },
+    { n: '38', label: 'automated tests on the engine', note: 'Dependency-free, one command' },
   ];
 
   const focus = [
@@ -36,15 +36,15 @@ export default function home() {
     },
     {
       t: 'Workflow automation',
-      d: 'Production pipelines with gates that can refuse to deliver. Fifty published videos were produced through two of them.',
+      d: 'Production pipelines with gates that can refuse to deliver. Twenty published 4K episodes were produced through one of them, unattended.',
       href: '/projects/hoshi-nova/',
       linkText: 'Hoshi Nova',
     },
     {
-      t: 'Product operations and security',
-      d: 'A licensing API in production, privacy enforced as architecture rather than policy, and the support that follows a sale.',
-      href: '/projects/mcp-labs/',
-      linkText: 'MCP Labs',
+      t: 'Privacy and security by design',
+      d: 'Processing kept on the user device, guarantees enforced by architecture rather than policy, and an information boundary held in place by an automated test.',
+      href: '/projects/hoshidub/',
+      linkText: 'Hoshidub',
     },
   ];
 
@@ -111,7 +111,7 @@ ${section({
     </article>`,
     )}
   </div>
-  <p class="sec-foot"><a href="/projects/">All seven case studies</a></p>`,
+  <p class="sec-foot"><a href="/projects/">All four case studies</a></p>`,
 })}
 
 <section class="honesty">
@@ -182,8 +182,8 @@ ${section({
     path: '/',
     title: 'Home',
     description:
-      'AI & Technology Specialist in Pretoria. Two released AI desktop apps, a live platform ' +
-      'with paying customers, and work I verify before I claim it.',
+      'AI & Technology Specialist in Pretoria. Two released AI desktop applications, twenty ' +
+      'produced 4K episodes, and work I verify before I claim it.',
     content,
     jsonLd: [
       {

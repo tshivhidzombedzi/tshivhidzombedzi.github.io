@@ -2,10 +2,9 @@
  * Core identity and contact facts.
  *
  * EVERY value in this file is either supplied by Tshivhidzo Mbedzi directly or
- * was read from a page he publishes himself (hoshidub.com / apexdrawdownzero.com
- * structured data, verified 2026-11-07). Nothing here is inferred.
+ * was read from a page he publishes himself (verified 2026-11-07). Nothing here is inferred.
  *
- * Values marked PLACEHOLDER are waiting on his confirmation - see docs/QUESTIONS.md.
+ * Open items are tracked in private/PROPOSED-PUBLIC-INVENTORY.md.
  */
 
 export const profile = {
@@ -44,50 +43,30 @@ export const profile = {
   // The one-paragraph version used in meta descriptions and the recruiter intro.
   summary:
     'Independent technology builder from Pretoria, South Africa. I design, build, test and ship ' +
-    'real software products with AI assistants as my engineering partner - two shipped Windows ' +
-    'applications, a live commercial storefront with a licensing API, and an automated trading ' +
-    'product with paying customers. My working discipline is verification: I measure what I build ' +
-    'and I retract my own results when the measurement was wrong.',
+    'real software with AI assistants as my engineering partner - two released Windows ' +
+    'applications built on locally hosted speech and language models, and twenty 4K animated ' +
+    'episodes produced by a pipeline I built. My working discipline is verification: I measure ' +
+    'what I build and I retract my own results when the measurement was wrong.',
 
   contact: {
-    // Publicly listed by him as the MCP Labs support address on apexdrawdownzero.com.
-    email: 'support@mcpautomation.io',
-    emailLabel: 'support@mcpautomation.io',
-    emailNote: 'Business address, published on his own sites. See docs/QUESTIONS.md Q1.',
-    phone: null, // PLACEHOLDER - not published anywhere; ask before adding.
+    // Personal address, chosen by him on 2026-11-08. Deliberately NOT a business address:
+    // any address on a business domain lets a recruiter identify the private business in
+    // one lookup, which defeats the purpose of keeping it out of this portfolio.
+    email: 'mbedzimz1@gmail.com',
+    emailLabel: 'mbedzimz1@gmail.com',
+    phone: null, // Omitted deliberately - see private/PROPOSED-PUBLIC-INVENTORY.md.
     linkedin: 'https://www.linkedin.com/in/tshivhidzo-mbedzi-a74040233/',
     linkedinLabel: 'linkedin.com/in/tshivhidzo-mbedzi',
-    // Checked 2026-11-07: no public account exists under mbedzimz1, mossmbedzi or
-    // tshivhidzombedzi. Set this once the portfolio repository is published. See QUESTIONS.md Q3.
+    // Checked 2026-11-07: no public account exists. Set this once the portfolio repository
+    // is published.
     github: null,
-    mql5: 'https://www.mql5.com/en/users/mbedzimz1/seller',
-    mql5Label: 'MQL5 verified seller',
   },
 
-  sites: [
-    {
-      label: 'mcpautomation.io',
-      url: 'https://mcpautomation.io',
-      what: 'MCP Labs storefront, customer portal and licensing API',
-    },
-    {
-      label: 'apexdrawdownzero.com',
-      url: 'https://apexdrawdownzero.com',
-      what: 'Product site for Apex Drawdown Zero',
-    },
-    {
-      label: 'hoshidub.com',
-      url: 'https://hoshidub.com',
-      what: 'Product site for Hoshidub, the live AI dubbing app',
-    },
-  ],
+  // Private business properties are deliberately not listed here. This portfolio is for
+  // employment and does not advertise them.
+  sites: [],
 
   channels: [
-    {
-      label: 'MCP LABS FOREX',
-      url: 'https://www.youtube.com/@KidosExpertsTrading',
-      what: 'Product education and a 30-lesson free course',
-    },
     {
       label: 'Hoshi & Aiko',
       url: 'https://www.youtube.com/@HoshiandAiko',

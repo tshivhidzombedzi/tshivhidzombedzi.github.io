@@ -49,7 +49,7 @@ export const roadmap = [
     proof:
       'A documented API with authentication, validation, error contracts and an automated test suite — not the hand-verified endpoint I currently operate.',
     evidence:
-      'A live licensing API in production: issuing, validation, account binding, expiry, revocation and sharing detection, with software in the field depending on it. It has no automated tests and no formal error contract.',
+      'I have built and operated an HTTP service in production that other software depended on at startup, including authentication and state handling. It had no automated tests and no formal error contract, which is the gap this step closes.',
     targetSkill: 'Backend / APIs',
   },
   {

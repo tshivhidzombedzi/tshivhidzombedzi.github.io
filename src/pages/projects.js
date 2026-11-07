@@ -1,5 +1,5 @@
 import { esc, prose, list, when, section, link } from '../lib/html.js';
-import projects, { featuredProjects, otherProjects } from '../data/projects.js';
+import projects from '../data/projects.js';
 import { renderDiagram } from '../templates/diagrams.js';
 
 /** Projects index. */
@@ -27,7 +27,7 @@ export function projectsIndex() {
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Projects</p>
-    <h1>Seven case studies, with the unfinished parts listed.</h1>
+    <h1>Four case studies, with the unfinished parts listed.</h1>
     <p class="page-lead">
       Each case study covers the problem, the architecture, what I was responsible for, what went
       wrong, how it was tested, and exactly what is not built. The last of those is on the page
@@ -45,27 +45,21 @@ export function projectsIndex() {
 </section>
 
 ${section({
-  eyebrow: 'Featured',
-  title: 'Shipped products and live platforms',
-  body: `<div class="cards cards--2">${list(featuredProjects, card)}</div>`,
-})}
-
-${section({
-  eyebrow: 'Also built',
-  title: 'Systems, engines and pipelines',
-  className: 'alt',
+  eyebrow: 'Case studies',
+  title: 'Four systems, built and shipped',
   lead:
-    'Smaller in scope or narrower in audience, but each one is where a specific technique was ' +
-    'worked out — an autonomy loop, an enforced information boundary, a verified content pipeline.',
-  body: `<div class="cards cards--3">${list(otherProjects, card)}</div>`,
+    'Two released desktop applications built on locally hosted AI models, an autonomous agent, ' +
+    'and a deterministic simulation engine. Each is described in full, including what is not ' +
+    'finished.',
+  body: `<div class="cards cards--2">${list(projects.slice().sort((a, b) => a.order - b.order), card)}</div>`,
 })}`;
 
   return {
     path: '/projects/',
     title: 'Projects',
     description:
-      'Seven technical case studies: two released AI desktop apps, a live commercial platform, ' +
-      'a trading product, an AI agent, a simulation engine and a video pipeline.',
+      'Four technical case studies: two released AI desktop applications, an autonomous AI ' +
+      'agent, and a deterministic multi-agent simulation engine.',
     content,
     jsonLd: [
       {
