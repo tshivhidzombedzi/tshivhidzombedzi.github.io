@@ -27,7 +27,7 @@ export function projectsIndex() {
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Projects</p>
-    <h1>Four case studies, with the unfinished parts listed.</h1>
+    <h1>Five case studies, with the unfinished parts listed.</h1>
     <p class="page-lead">
       Each case study covers the problem, the architecture, what I was responsible for, what went
       wrong, how it was tested, and exactly what is not built. The last of those is on the page
@@ -46,11 +46,11 @@ export function projectsIndex() {
 
 ${section({
   eyebrow: 'Case studies',
-  title: 'Four systems, built and shipped',
+  title: 'Five systems, built and shipped',
   lead:
     'Two released desktop applications built on locally hosted AI models, an autonomous agent, ' +
-    'and a deterministic simulation engine. Each is described in full, including what is not ' +
-    'finished.',
+    'a deterministic simulation engine, and the generator that builds this site. Each is ' +
+    'described in full, including what is not finished.',
   body: `<div class="cards cards--2">${list(projects.slice().sort((a, b) => a.order - b.order), card)}</div>`,
 })}`;
 
@@ -58,8 +58,8 @@ ${section({
     path: '/projects/',
     title: 'Projects',
     description:
-      'Four technical case studies: two released AI desktop applications, an autonomous AI ' +
-      'agent, and a deterministic multi-agent simulation engine.',
+      'Five technical case studies: two released AI desktop applications, an autonomous AI ' +
+      'agent, a simulation engine, and the generator behind this site.',
     content,
     jsonLd: [
       {

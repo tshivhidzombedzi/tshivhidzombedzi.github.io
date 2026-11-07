@@ -351,6 +351,49 @@ export const diagrams = {
       ],
     }),
 
+  portfolio: () =>
+    flow({
+      id: 'site',
+      title: 'Portfolio build and release pipeline',
+      desc:
+        'Content lives as plain data, a dependency-free generator renders it to static HTML, and a sixteen-rule gate measures the output. A failure stops the release and leaves the previous version live.',
+      rows: [
+        {
+          nodes: [
+            { t: 'Content as data files', sub: 'projects · skills · CV · roadmap', kind: 'in' },
+            { t: 'Design tokens & templates', kind: 'in' },
+          ],
+        },
+        {
+          nodes: [{ t: 'Generator', sub: 'Node standard library only · no framework', kind: 'proc' }],
+          note: 'Base path derived from the site URL, so a subpath deploy needs no second setting.',
+        },
+        {
+          nodes: [
+            { t: 'Static HTML', sub: '16 pages', kind: 'proc' },
+            { t: 'ATS .docx', sub: 'WordprocessingML + zlib', kind: 'proc' },
+            { t: 'Share image', sub: 'hand-written PNG encoder', kind: 'proc' },
+          ],
+        },
+        {
+          nodes: [
+            {
+              t: 'Verification gate — 16 rules',
+              sub: 'links · anchors · headings · alt text · metadata · placeholders',
+              kind: 'gate',
+            },
+          ],
+          note: 'Exits non-zero on any failure, so the deploy stops before anything is published.',
+        },
+        {
+          nodes: [
+            { t: 'Published site', kind: 'out' },
+            { t: 'Previous version kept live on failure', kind: 'store' },
+          ],
+        },
+      ],
+    }),
+
 };
 
 export function renderDiagram(key) {

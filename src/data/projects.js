@@ -755,6 +755,194 @@ export const projects = [
     ],
   },
 
+  // ─────────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'portfolio-site',
+    keyPoints: [
+      'A zero-dependency static site generator in Node: 16 pages, no framework, no web fonts, nothing to install.',
+      'A verification gate of 16 rules that fails the build on a broken link, a missing heading or an unfilled template slot.',
+      'An ATS-safe .docx written directly as WordprocessingML, and a share image from a hand-rolled PNG encoder — standard library only.',
+    ],
+    meta:
+      'A zero-dependency static site generator with a verification gate, an ATS-safe .docx writer and a hand-rolled PNG encoder, standard library only.',
+    title: 'This portfolio',
+    subtitle: 'Zero-dependency static site generator and publishing toolchain',
+    tagline:
+      'The site you are reading, and the tooling behind it: a generator with no dependencies, a build that refuses to publish broken output, and document generation written down to the file format.',
+    category: 'Web Engineering & Tooling',
+    featured: true,
+    order: 5,
+    status: STATUS.built,
+    period: 'November 2026',
+    role: 'Sole designer, builder and author',
+    links: [],
+    oneLiner:
+      'The one project here you can inspect completely — the source, the build, the gate and the output are all in front of you.',
+
+    metrics: [
+      { label: 'Runtime dependencies', value: '0', note: 'Nothing to install, builds offline' },
+      { label: 'Pages generated', value: '16', note: 'From plain data files' },
+      { label: 'Build time', value: '~50 ms', note: 'Measured over repeated runs' },
+      { label: 'Verification rules', value: '16', note: 'Any failure fails the build' },
+    ],
+
+    overview: `This site is produced by a build system I wrote, with no framework and no
+      dependencies at all. Content lives in plain data files, a generator turns them into static
+      HTML, a verification step measures the output, and only if that passes does anything get
+      published.
+
+      It is included as a case study for one reason: it is the only project here a reader can
+      check completely. Every other case study asks you to take my word for how something was
+      built. This one is the thing you are looking at.`,
+
+    problem: `A portfolio has to be fast, accessible, discoverable, cheap to host, and still easy
+      to change in a year when I have forgotten how it works. The conventional answer is a
+      framework, which brings several hundred megabytes of dependencies, a required install step,
+      and a toolchain I did not choose and could not fully explain.
+
+      There is a second problem specific to this site. Its whole argument is that I verify my own
+      work before claiming it. A portfolio making that claim while shipping broken links or
+      missing headings would refute itself on contact.`,
+
+    solution: `A generator of a few hundred lines using only the Node standard library. Output is
+      plain HTML, CSS and JavaScript, so it deploys by copying a folder and will still build in
+      five years.
+
+      The part that matters is the gate. A separate program walks the built output and checks
+      sixteen rules: every internal link and asset resolves, every in-page anchor exists, each
+      page has exactly one top-level heading and a description and a canonical URL, every image
+      carries alternative text, no external link opens without the right rel attribute, and no
+      placeholder marker or unfilled template slot survives. It exits non-zero on any failure,
+      and the deployment workflow runs it before publishing, so a failed check leaves the
+      previous version live.
+
+      Two smaller pieces were written down to the file format rather than pulled from a library.
+      The CV is generated as WordprocessingML and zipped with the standard library, so it
+      contains exactly the markup I wrote and provably none of the structures that applicant
+      tracking systems mangle. The social share image comes from a PNG encoder written here,
+      because the alternative was a headless browser for one 1200x630 file.`,
+
+    stack: [
+      { group: 'Generator', items: ['Node.js', 'JavaScript (ESM)', 'Template literals', 'No framework'] },
+      { group: 'Output', items: ['Static HTML', 'One CSS file', 'About 90 lines of JavaScript'] },
+      { group: 'Documents', items: ['WordprocessingML', 'ZIP via zlib', 'Print stylesheet for PDF'] },
+      { group: 'Images', items: ['Hand-written PNG encoder', 'Inline SVG diagrams'] },
+      { group: 'Delivery', items: ['GitHub Actions', 'GitHub Pages', 'Gate before deploy'] },
+    ],
+
+    diagram: 'portfolio',
+
+    responsibilities: [
+      'Designed and wrote the generator, the preview server and the verification gate.',
+      'Designed the visual system: tokens, type scale, layout, responsive behaviour and print styles.',
+      'Wrote every word of the content, and the editorial rules that govern what may appear.',
+      'Wrote the .docx generator against the WordprocessingML format directly.',
+      'Wrote the PNG encoder that produces the social share image.',
+      'Set up continuous deployment with verification as a release gate.',
+      'Audited the repository for secrets before publication, and rewrote history when one was found.',
+    ],
+
+    process: [
+      {
+        title: 'Content as data, not markup',
+        body: 'Every page is generated from plain data files. Changing a project, a skill or a roadmap step never means touching a template, which is what keeps the site maintainable by someone who has not looked at it for a year.',
+      },
+      {
+        title: 'Write the gate early',
+        body: 'The verification step was built before most of the content. It has since caught a broken link, a duplicate heading, several over-long meta descriptions and a skipped heading level — all of which I would otherwise have shipped.',
+      },
+      {
+        title: 'Look at the output, do not only test it',
+        body: 'The PNG encoder passed every structural check while silently failing to draw part of the image. Opening the file was the only thing that found it.',
+      },
+      {
+        title: 'Audit before publishing, not after',
+        body: 'The repository was scanned for credentials before it was ever pushed. Publishing is irreversible in practice: a secret in a public history is already compromised.',
+      },
+    ],
+
+    challenges: [
+      {
+        title: 'A bug that no structural test could catch',
+        body: `The generated share image passed everything: valid signature, correct header,
+          correct dimensions, sensible file size. Opening it showed an empty box where a monogram
+          should have been. The cause was that a centring calculation produced a fractional
+          coordinate, and writing to a fractional index in a byte buffer is silently ignored
+          rather than throwing. The fix was one line. The lesson was that "the file is valid" and
+          "the file is correct" are different questions, and only one of them is cheap to
+          automate.`,
+      },
+      {
+        title: 'A checker that cried wolf',
+        body: `The gate scanned for leftover placeholder text without regard to case. The CV page
+          legitimately contains the phrase "leftover placeholder text", describing this very
+          feature, so the build failed on correct content. The tempting fix is an exception for
+          that page. The right fix was to tighten the rule, since real markers are written in
+          capitals — because a checker that produces false positives is one people learn to
+          ignore, which is worse than having no checker at all.`,
+      },
+      {
+        title: 'Root-relative links break on a subpath',
+        body: `Every internal link here is root-relative, which is correct at the root of a domain
+          and completely broken when the site is served from a subpath, as a project-level
+          GitHub Pages site is. The usual symptom is an entirely unstyled page. Rather than add a
+          separate setting that has to be kept in sync, the base path is derived from the
+          configured site URL, so canonical URLs, the sitemap and in-page links all follow from
+          one value.`,
+      },
+      {
+        title: 'Credentials in a file that was about to be published',
+        body: `A pre-publication scan found a live server username, host, port and key filename
+          sitting in the deployment guide. Removing them in a later commit would not have been
+          enough, because the earlier commit still carried them in history and anyone could read
+          it. The history was rewritten before anything was pushed, and the result verified by
+          searching the entire history for the strings rather than assuming.`,
+      },
+    ],
+
+    testing: [
+      {
+        title: 'Sixteen automated rules, enforced as a release gate',
+        body: 'Links, assets, anchors, headings, titles, descriptions, canonical URLs, image alternative text, link rel attributes, placeholder markers and template slots. Non-zero exit on any failure, run before every deployment.',
+      },
+      {
+        title: 'Responsive behaviour verified by measurement',
+        body: 'Checked at desktop and mobile widths, with horizontal overflow measured in the browser rather than judged by eye.',
+      },
+      {
+        title: 'Behaviour verified, not assumed',
+        body: 'The mobile menu was confirmed to toggle both its ARIA state and its visibility by reading them directly, after a screenshot had made it look as though it had not worked.',
+      },
+      {
+        title: 'Document structure validated',
+        body: 'The generated .docx is opened as a ZIP, every XML part parsed, and the absence of tables, text boxes, drawings and column definitions confirmed by counting them.',
+      },
+    ],
+
+    statusDetail: {
+      built: [
+        'Full static site generator with content, templates, diagrams and a local preview server.',
+        'Verification gate of sixteen rules, wired into continuous deployment.',
+        'ATS-safe .docx generator written directly against the WordprocessingML format.',
+        'PNG encoder for the social share image, standard library only.',
+        'Subpath-aware builds, so the same source deploys to a root domain or a project subpath.',
+        'Accessibility fundamentals, and a print stylesheet that produces a clean PDF of the CV.',
+      ],
+      notBuilt: [
+        'It is not published yet. The repository is local and the site has not been deployed, which is why this page carries no live link.',
+        'No automated accessibility audit. Accessibility was built in deliberately and checked by hand, but nothing in the gate enforces it.',
+        'No automated tests for the generator itself. The gate tests the output, not the code that produced it.',
+        'No image optimisation pipeline, because the site currently has almost no images.',
+      ],
+    },
+
+    future: [
+      'Publish it. Until that is done it is the only item on this list that matters.',
+      'Add an automated accessibility check to the gate, so accessibility is enforced rather than remembered.',
+      'Add unit tests for the generator itself, not only checks on its output.',
+      'Record page weight over time, so a size regression becomes visible rather than discovered.',
+    ],
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured).sort((a, b) => a.order - b.order);
