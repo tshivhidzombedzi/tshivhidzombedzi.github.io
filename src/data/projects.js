@@ -26,6 +26,11 @@ export const projects = [
   // ─────────────────────────────────────────────────────────────────────────────
   {
     slug: 'hoshi-nova',
+    keyPoints: [
+      'Produced 20 episodes at verified 3840x2160, unattended, from structured data.',
+      'An automated gate measures every delivered file and restores the previous version rather than shipping a failure.',
+      'Found systemic animation defects by automated geometry scanning, after they had already passed human review.',
+    ],
     meta:
       'AI-assisted animation platform that produced 20 episodes at verified 4K from structured data, unattended, behind an automated delivery gate.',
     title: 'Hoshi Nova',
@@ -218,6 +223,11 @@ export const projects = [
   // ─────────────────────────────────────────────────────────────────────────────
   {
     slug: 'hoshidub',
+    keyPoints: [
+      'A released Windows application with speech recognition, speech synthesis and a language model all running on the device in front of you.',
+      'Zero dub latency achieved by scheduling against known cue times, not by faster inference.',
+      'Spoiler safety enforced by what the model is given, not by what it is told.',
+    ],
     meta:
       'Released Windows app giving every anime character its own English voice in real time, processed on-device, with a spoiler-safe AI companion.',
     title: 'Hoshidub',
@@ -391,6 +401,11 @@ export const projects = [
   // ─────────────────────────────────────────────────────────────────────────────
   {
     slug: 'hoshi-live',
+    keyPoints: [
+      'An AI presenter that runs a session unattended, deciding for itself when to speak and when to stay silent.',
+      'Emergency stop, moderation and per-viewer data removal were built before any audience existed.',
+      'Built and tested, but it has never run a real public broadcast, and this page says so throughout.',
+    ],
     meta:
       'An AI presenter that hosts a stream unattended, reading chat, choosing topics and reacting to video. Built and tested, never broadcast live.',
     title: 'Project Luna',
@@ -566,6 +581,11 @@ export const projects = [
   // ─────────────────────────────────────────────────────────────────────────────
   {
     slug: 'friend-debt-engine',
+    keyPoints: [
+      'Eight agents reasoning over private knowledge, each fact carrying where it came from.',
+      'An automated test fails the build if agent code reads the hidden truth it is meant to deduce.',
+      '38 tests, fully deterministic from a seed, zero dependencies.',
+    ],
     meta:
       'A dependency-free simulation of eight agents with private knowledge, and a test proving the reasoning code cannot read the hidden truth.',
     title: 'FRIEND//DEBT simulation engine',

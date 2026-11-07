@@ -142,6 +142,15 @@ export function projectPage(p) {
     </ul>
 
     ${when(
+      p.keyPoints && p.keyPoints.length,
+      () => `
+    <div class="inshort">
+      <p class="inshort-k">In short</p>
+      <ul>${list(p.keyPoints, (k) => `<li>${esc(k)}</li>`)}</ul>
+    </div>`,
+    )}
+
+    ${when(
       p.disclaimer,
       () => `
     <div class="callout callout--warn">

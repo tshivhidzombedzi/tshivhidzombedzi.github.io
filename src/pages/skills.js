@@ -75,18 +75,41 @@ export default function skills() {
   </div>
 </section>
 
-${list(
-  skillCategories,
-  (cat, i) =>
-    section({
-      id: cat.id,
-      eyebrow: `Category ${i + 1} of ${skillCategories.length}`,
-      title: cat.name,
-      lead: cat.summary,
-      className: i % 2 === 1 ? 'alt' : '',
-      body: `<ul class="skill-list">${list(cat.skills, skillRow)}</ul>`,
-    }),
-)}
+${section({
+  className: 'alt',
+  body: `
+  <nav class="jump" aria-label="Skill categories">
+    <p class="jump-k">Jump to</p>
+    <ul>
+      ${list(
+        skillCategories,
+        (cat) => `<li><a href="#${esc(cat.id)}">${esc(cat.name)} <span>${esc(
+          cat.skills.length,
+        )}</span></a></li>`,
+      )}
+    </ul>
+  </nav>`,
+})}
+
+${list(skillCategories, (cat, i) => {
+  // Per-category tier counts, so the shape of each category is readable before the list is.
+  const c = { demonstrated: 0, working: 0, learning: 0 };
+  for (const sk of cat.skills) c[sk.tier] += 1;
+  const bar = `
+    <p class="cat-counts">
+      ${c.demonstrated ? `<span class="cc cc--demonstrated">${c.demonstrated} demonstrated</span>` : ''}
+      ${c.working ? `<span class="cc cc--working">${c.working} working knowledge</span>` : ''}
+      ${c.learning ? `<span class="cc cc--learning">${c.learning} learning</span>` : ''}
+    </p>`;
+  return section({
+    id: cat.id,
+    eyebrow: `Category ${i + 1} of ${skillCategories.length}`,
+    title: cat.name,
+    lead: cat.summary,
+    className: i % 2 === 1 ? 'alt' : '',
+    body: `${bar}<ul class="skill-list">${list(cat.skills, skillRow)}</ul>`,
+  });
+})}
 
 ${section({
   title: 'How to test any of this',

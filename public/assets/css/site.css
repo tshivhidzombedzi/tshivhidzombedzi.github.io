@@ -1123,6 +1123,43 @@ section.alt .card {
   }
 }
 
+/* "In short": three lines that let a reader decide whether to read the rest. */
+.inshort {
+  margin-top: 1.9rem;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--accent);
+  background: var(--surface);
+  max-width: 78ch;
+}
+.inshort-k {
+  font-size: 0.6562rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 0.7rem;
+}
+.inshort ul {
+  display: grid;
+  gap: 0.5rem;
+}
+.inshort li {
+  font-size: 0.9375rem;
+  color: var(--text);
+  padding-left: 1.1rem;
+  position: relative;
+}
+.inshort li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 7px;
+  height: 1px;
+  background: var(--accent);
+}
+
 .proj-body {
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr);
@@ -1443,6 +1480,68 @@ section.alt .card {
   font-size: 0.8438rem;
   color: var(--text-3);
 }
+
+/* Jump nav: 42 skills across six categories is a lot to scroll blindly. */
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem 1.2rem;
+}
+.jump-k {
+  font-size: 0.6562rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-4);
+}
+.jump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.jump a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.8438rem;
+  color: var(--text-2);
+  padding: 0.28rem 0.65rem;
+  border: 1px solid var(--line-2);
+  border-radius: 3px;
+}
+.jump a:hover {
+  color: var(--text);
+  border-color: var(--line-3);
+  text-decoration: none;
+}
+.jump a span {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-4);
+}
+.cat-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.75rem;
+}
+.cc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-3);
+}
+.cc::before {
+  content: "";
+  width: 12px;
+  height: 2px;
+  background: var(--line-3);
+}
+.cc--demonstrated::before { background: var(--good); }
+.cc--working::before { background: var(--accent); }
+.cc--learning::before { background: var(--quiet); }
 
 .skill-list {
   display: grid;

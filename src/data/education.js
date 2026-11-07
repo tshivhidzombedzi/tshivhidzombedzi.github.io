@@ -32,6 +32,7 @@ export const education = [
     // if his transcript shows the older set, this list must be swapped back.
     //
     // These state what the programme covers. They are NOT a claim of mastery of each module.
+    // CONFIRMED BY HIM 2026-11-08: this is the module set on his transcript.
     curriculumSource: 'Registered curriculum, SAQA ID 126343',
     curriculum: [
       'Technical Writing and Communication',
