@@ -195,7 +195,7 @@ ${section({
       AI engineering role. The career page sets out where I fit and where I do not.
     </p>
     <div class="cta-actions">
-      <a class="btn btn--primary" href="/contact/">Get in touch</a>
+      <a class="btn btn--primary" href="/hire/">What you can hire me for</a>
       <a class="btn btn--ghost" href="/career/#roles">Role-by-role fit</a>
     </div>
   </div>

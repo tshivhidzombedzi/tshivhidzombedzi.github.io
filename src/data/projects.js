@@ -768,7 +768,7 @@ export const projects = [
   {
     slug: 'portfolio-site',
     keyPoints: [
-      'A zero-dependency static site generator in Node: 16 pages, no framework, no web fonts, nothing to install.',
+      'A zero-dependency static site generator in Node: 17 pages, no framework, no web fonts, nothing to install.',
       'A verification gate of 16 rules that fails the build on a broken link, a missing heading or an unfilled template slot.',
       'An ATS-safe .docx written directly as WordprocessingML, and a share image from a hand-rolled PNG encoder — standard library only.',
     ],
@@ -790,7 +790,7 @@ export const projects = [
 
     metrics: [
       { label: 'Runtime dependencies', value: '0', note: 'Nothing to install, builds offline' },
-      { label: 'Pages generated', value: '16', note: 'From plain data files' },
+      { label: 'Pages generated', value: '17', note: 'From plain data files' },
       { label: 'Build time', value: '~50 ms', note: 'Measured over repeated runs' },
       { label: 'Verification rules', value: '16', note: 'Any failure fails the build' },
     ],

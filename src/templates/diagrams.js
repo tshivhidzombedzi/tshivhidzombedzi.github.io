@@ -370,7 +370,7 @@ export const diagrams = {
         },
         {
           nodes: [
-            { t: 'Static HTML', sub: '16 pages', kind: 'proc' },
+            { t: 'Static HTML', sub: '17 pages', kind: 'proc' },
             { t: 'ATS .docx', sub: 'WordprocessingML + zlib', kind: 'proc' },
             { t: 'Share image', sub: 'hand-written PNG encoder', kind: 'proc' },
           ],

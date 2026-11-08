@@ -37,6 +37,7 @@ import verification from './src/pages/verification.js';
 import educationPage from './src/pages/education.js';
 import career from './src/pages/career.js';
 import contact from './src/pages/contact.js';
+import hire from './src/pages/hire.js';
 import cvPage from './src/pages/cv.js';
 import notFound from './src/pages/notfound.js';
 
@@ -85,6 +86,7 @@ function collectPages() {
     verification(),
     educationPage(),
     career(),
+    hire(),
     contact(),
     cvPage(),
     notFound(),

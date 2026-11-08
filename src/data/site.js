@@ -39,6 +39,7 @@ export const site = {
     { label: 'Verification', href: '/verification/' },
     { label: 'Education', href: '/education/' },
     { label: 'Career', href: '/career/' },
+    { label: 'Hire me', href: '/hire/' },
     { label: 'Contact', href: '/contact/' },
   ],
 
@@ -55,6 +56,7 @@ export const site = {
     {
       title: 'Professional',
       links: [
+        { label: 'Hire me', href: '/hire/' },
         { label: 'About me', href: '/about/' },
         { label: 'Education', href: '/education/' },
         { label: 'Career development', href: '/career/' },
