@@ -63,8 +63,8 @@ export const profile = {
     linkedinLabel: 'linkedin.com/in/tshivhidzo-mbedzi',
     // Published 2026-11-08. Note this is a different account from the one branded for his
     // private business, which is deliberately not linked anywhere.
-    github: 'https://github.com/tshivhidzombedzi1-lgtm/portfolio',
-    githubLabel: 'github.com/tshivhidzombedzi1-lgtm',
+    github: 'https://github.com/tshivhidzombedzi/tshivhidzombedzi.github.io',
+    githubLabel: 'github.com/tshivhidzombedzi',
   },
 
   // Private business properties are deliberately not listed here. This portfolio is for

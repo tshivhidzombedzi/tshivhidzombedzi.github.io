@@ -19,7 +19,7 @@ export const site = {
   // name, which is the right shape for a job search. REGISTER IT, then set
   // `baseUrlConfirmed: true` below. If you would rather not buy a domain,
   // A subdomain of a domain you already own is a free alternative and needs one DNS record.
-  baseUrl: (envUrl || 'https://tshivhidzombedzi1-lgtm.github.io/portfolio').replace(/\/$/, ''),
+  baseUrl: (envUrl || 'https://tshivhidzombedzi.github.io').replace(/\/$/, ''),
 
   // The build warns on every run until this is true. It exists because deploying with the
   // wrong baseUrl silently breaks every canonical URL, the sitemap and the share card.
