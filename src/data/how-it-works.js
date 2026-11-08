@@ -233,6 +233,49 @@ export const howItWorks = {
         which is the entire argument of this portfolio, demonstrated on the portfolio itself.`,
     },
   },
+  'hoshi-cut': {
+    intro: `You give it one video file. It comes back with a score, a list of things to fix with
+      timecodes, an edited cut, and a set of short-form clips. Every one of those is traceable to
+      something it measured in your footage.`,
+    steps: [
+      {
+        t: 'One pass, two senses',
+        d: 'A single analysis pass measures the picture — exposure, contrast, detail, movement, where the cuts fall, where attention sits in the frame — and the sound on every audio track separately: level, silence, clipping, speech, music, transients. It also transcribes the speech with word-level timings. Five minutes of high-resolution footage takes roughly a hundred seconds.',
+      },
+      {
+        t: 'Measurements become six scales',
+        d: 'Those raw numbers feed six scores: hook, pacing, picture, sound, emotion and short-form suitability. Each one shows the measurements it came from, so a score you disagree with can be argued with rather than just accepted.',
+      },
+      {
+        t: 'The weakest scale carries most of the weight',
+        d: 'The final score is 40 per cent the average and 60 per cent the worst scale. This is deliberate. Under a plain average, a video with excellent picture and inaudible dialogue scores well — and a video nobody can hear is not a good video with one flaw.',
+      },
+      {
+        t: 'Notes are actions, not observations',
+        d: 'Not "pacing is weak" but where it goes dead, where a cut belongs, where to push in, where the voice is buried under the game. Each one carries the timecode, so you jump straight to it instead of hunting.',
+      },
+      {
+        t: 'Clip boundaries come from speech and shots',
+        d: 'Picking the highest-scoring windows produces clips that start mid-word. Boundaries are snapped to real speech and shot-change points from the transcript and the cut data instead — sometimes a slightly lower-scoring window, always a watchable one.',
+      },
+      {
+        t: 'Reframe, caption, level',
+        d: 'Clips are reframed to 9:16 by following the action rather than cropping the centre, captioned against the word timings, and the whole output normalised to a broadcast loudness target with peaks held down.',
+      },
+    ],
+    hardPart: {
+      t: 'The interesting part: the number of clips is an output, not a target',
+      d: `Ask most tools for ten clips and you get ten, whether or not the footage contains ten
+        good moments. That is the failure this application exists to avoid: a confident answer
+        with no traceable basis is worse than no answer, because it gets acted on.
+
+        Here, three good moments produce three clips. Every clip, note and voice-over line carries
+        the timecode it came from, so you can check any of them against the source in a second.
+        The constraint is simple — nothing is invented to reach a number — and it is the reason
+        the scoring, the boundaries and the notes are all built the way they are.`,
+    },
+  },
+
 };
 
 export default howItWorks;

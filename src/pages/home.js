@@ -125,7 +125,7 @@ ${section({
 ${section({
   id: 'work',
   eyebrow: 'Selected work',
-  title: 'Five systems, built and shipped',
+  title: 'Six systems, built and shipped',
   lead:
     'Each case study covers the problem, the architecture, what I was responsible for, what ' +
     'went wrong, how it was tested, and what is not finished.',
@@ -152,7 +152,7 @@ ${section({
     </article>`,
     )}
   </div>
-  <p class="sec-foot"><a href="/projects/">All five case studies</a></p>`,
+  <p class="sec-foot"><a href="/projects/">All six case studies</a></p>`,
 })}
 
 <section class="honesty">

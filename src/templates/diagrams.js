@@ -370,7 +370,7 @@ export const diagrams = {
         },
         {
           nodes: [
-            { t: 'Static HTML', sub: '17 pages', kind: 'proc' },
+            { t: 'Static HTML', sub: '18 pages', kind: 'proc' },
             { t: 'ATS .docx', sub: 'WordprocessingML + zlib', kind: 'proc' },
             { t: 'Share image', sub: 'hand-written PNG encoder', kind: 'proc' },
           ],
@@ -389,6 +389,42 @@ export const diagrams = {
           nodes: [
             { t: 'Published site', kind: 'out' },
             { t: 'Previous version kept live on failure', kind: 'store' },
+          ],
+        },
+      ],
+    }),
+
+  hoshiCut: () =>
+    flow({
+      id: 'cut',
+      title: 'Hoshi Cut analysis and editing pipeline',
+      desc:
+        'One measurement pass over picture and sound feeds everything downstream. Scores, notes and clips all carry the timecode of the measurement they came from, so no judgement exists without evidence in the footage.',
+      rows: [
+        { nodes: [{ t: 'One uploaded video', sub: 'the only source of truth', kind: 'in' }] },
+        {
+          nodes: [
+            { t: 'Picture measurement', sub: 'exposure · motion · cuts · attention', kind: 'proc' },
+            { t: 'Sound measurement', sub: 'per track · level · speech · transients', kind: 'proc' },
+            { t: 'Transcription', sub: 'word-level timings', kind: 'model' },
+          ],
+        },
+        {
+          nodes: [{ t: 'Six scales scored', sub: 'hook · pacing · picture · sound · emotion · short-form', kind: 'proc' }],
+          note: 'Final score is 40% the average and 60% the weakest, so one bad dimension cannot hide.',
+        },
+        {
+          nodes: [
+            { t: 'Notes with timecodes', sub: 'one action each', kind: 'out' },
+            { t: 'Clip boundary selection', sub: 'snapped to speech and shot edges', kind: 'gate' },
+          ],
+          note: 'Clip count is whatever the footage supports — never padded to reach a number.',
+        },
+        {
+          nodes: [
+            { t: 'Edited cut', sub: 'levelled to -14 LUFS', kind: 'out' },
+            { t: 'Short-form clips', sub: '9:16, captions, action-tracked', kind: 'out' },
+            { t: 'Voice-over', sub: 'delivery measured, never cloned', kind: 'out' },
           ],
         },
       ],

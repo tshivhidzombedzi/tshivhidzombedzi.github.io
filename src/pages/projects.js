@@ -28,7 +28,7 @@ export function projectsIndex() {
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Projects</p>
-    <h1>Five case studies, with the unfinished parts listed.</h1>
+    <h1>Six case studies, with the unfinished parts listed.</h1>
     <p class="page-lead">
       Each case study covers the problem, the architecture, what I was responsible for, what went
       wrong, how it was tested, and exactly what is not built. The last of those is on the page
@@ -47,7 +47,7 @@ export function projectsIndex() {
 
 ${section({
   eyebrow: 'Case studies',
-  title: 'Five systems, built and shipped',
+  title: 'Six systems, built and shipped',
   lead:
     'Two released desktop applications built on locally hosted AI models, an autonomous agent, ' +
     'a deterministic simulation engine, and the generator that builds this site. Each is ' +
@@ -59,8 +59,8 @@ ${section({
     path: '/projects/',
     title: 'Projects',
     description:
-      'Five technical case studies: two released AI desktop applications, an autonomous AI ' +
-      'agent, a simulation engine, and the generator behind this site.',
+      'Six technical case studies: released AI desktop applications, an autonomous agent, a ' +
+      'simulation engine, a video analysis tool and the generator behind this site.',
     content,
     jsonLd: [
       {
@@ -80,11 +80,13 @@ ${section({
 
 /** A single project case study. */
 export function projectPage(p) {
+  // The How it works entry is conditional: a project without one must not get a contents
+  // link to a section that never renders. The build gate caught exactly that.
   const toc = [
     ['overview', 'Overview'],
     ['problem', 'The problem'],
     ['solution', 'The solution'],
-    ['how', 'How it works'],
+    ...(howItWorks[p.slug] ? [['how', 'How it works']] : []),
     ['stack', 'Technology stack'],
     ['architecture', 'System architecture'],
     ['responsibilities', 'My responsibilities'],

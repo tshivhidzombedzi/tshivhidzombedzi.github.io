@@ -768,7 +768,7 @@ export const projects = [
   {
     slug: 'portfolio-site',
     keyPoints: [
-      'A zero-dependency static site generator in Node: 17 pages, no framework, no web fonts, nothing to install.',
+      'A zero-dependency static site generator in Node: 18 pages, no framework, no web fonts, nothing to install.',
       'A verification gate of 16 rules that fails the build on a broken link, a missing heading or an unfilled template slot.',
       'An ATS-safe .docx written directly as WordprocessingML, and a share image from a hand-rolled PNG encoder — standard library only.',
     ],
@@ -790,7 +790,7 @@ export const projects = [
 
     metrics: [
       { label: 'Runtime dependencies', value: '0', note: 'Nothing to install, builds offline' },
-      { label: 'Pages generated', value: '17', note: 'From plain data files' },
+      { label: 'Pages generated', value: '18', note: 'From plain data files' },
       { label: 'Build time', value: '~50 ms', note: 'Measured over repeated runs' },
       { label: 'Verification rules', value: '16', note: 'Any failure fails the build' },
     ],
@@ -950,6 +950,184 @@ export const projects = [
       'Add an automated accessibility check to the gate, so accessibility is enforced rather than remembered.',
       'Add unit tests for the generator itself, not only checks on its output.',
       'Record page weight over time, so a size regression becomes visible rather than discovered.',
+    ],
+  },
+  // ─────────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'hoshi-cut',
+    keyPoints: [
+      'Watches and listens to one uploaded video, measures picture and sound across six scales, and scores it so the weakest part cannot hide behind the average.',
+      'Cuts short-form clips that begin and end where something actually begins and ends, reframed to 9:16 by following the action, with word-timed captions.',
+      'Every clip, note and voice-over line carries the timecode it came from. Nothing is invented to fill a quota.',
+    ],
+    meta:
+      'A desktop application that measures one uploaded video across picture and sound, scores it, and cuts short-form clips that carry the timecodes they came from.',
+    title: 'Hoshi Cut',
+    subtitle: 'Video analysis, scoring and short-form editing from one upload',
+    tagline:
+      'Upload one video. The application watches it, listens to it, measures every part of it, tells you where it goes wrong, and cuts the strongest moments into short-form clips — all from that one file, with nothing invented.',
+    category: 'AI Product Development',
+    featured: true,
+    order: 6,
+    status: STATUS.built,
+    period: '2026',
+    role: 'Sole builder',
+    links: [],
+    oneLiner:
+      'An editing assistant whose entire design rule is that every judgement must trace back to something measured in the footage.',
+
+    metrics: [
+      { label: 'Analysis speed', value: '~100 s', note: 'For 5 minutes at 2580x1080, on one workstation' },
+      { label: 'Scoring scales', value: '6', note: 'Hook, pacing, picture, sound, emotion, short-form' },
+      { label: 'Edit modes', value: '6', note: 'Plus a trailer and an arbitrary-length cut' },
+      { label: 'Loudness target', value: '-14 LUFS', note: 'Peaks held under -1.5 dBFS' },
+    ],
+
+    overview: `Hoshi Cut takes a single uploaded video and does four things with it: measures it,
+      judges it, improves it, and cuts it into short-form clips.
+
+      The measuring pass covers the picture — exposure, contrast, detail, movement, where the cuts
+      fall, where attention sits in the frame — and the sound, per audio track: level, silence,
+      clipping, speech, music, transients. It also transcribes the speech with word-level timings.
+
+      The design rule underneath all of it is that the uploaded video is the only source of truth.
+      Every clip, every note, every voice-over line comes from something measured or heard in that
+      footage, and carries the timecode it came from so you can jump straight back and check it.`,
+
+    problem: `Editing software can cut anything but tells you nothing. It will not say that your
+      first eight seconds are dead, that your voice is buried under the game audio, or that the
+      best thirty seconds in a long recording start at 14:22.
+
+      The tools that do claim to help tend to invent. Asked for ten clips they return ten,
+      whether or not there are ten good moments, and the reasoning behind each is unavailable. For
+      someone deciding what to publish, a confident answer with no traceable basis is worse than
+      no answer, because it is acted on.`,
+
+    solution: `Measure first, and make every judgement traceable to a measurement.
+
+      One analysis pass produces numbers for picture and sound. Those numbers feed six scales —
+      hook, pacing, picture, sound, emotion and short-form suitability — each showing the
+      measurements behind it. The final score is deliberately not an average: it is 40 per cent
+      the mean and 60 per cent the weakest scale, so one bad dimension cannot be hidden by five
+      good ones. A video with great picture and inaudible dialogue should not score well, and
+      under a plain average it would.
+
+      Notes are actions rather than observations: where it goes dead, where a cut belongs, where
+      to push in, where the voice is buried. Each carries its timecode.
+
+      Clip selection refuses to pad. Clips start and end where something starts and ends — never
+      mid-sentence — and if the footage contains three good moments, you get three clips. The
+      number is an output, not a target.`,
+
+    stack: [
+      { group: 'Application', items: ['Electron', 'Node.js', 'Local-first processing'] },
+      { group: 'Vision', items: ['Frame measurement', 'Shot-change detection', 'Attention estimation'] },
+      { group: 'Audio', items: ['Per-track analysis', 'Speech detection', 'Loudness and true-peak metering'] },
+      { group: 'Speech', items: ['Transcription with word timings', 'Local speech synthesis'] },
+      { group: 'Output', items: ['ffmpeg', '9:16 reframing', 'Word-timed captions'] },
+    ],
+
+    diagram: 'hoshiCut',
+
+    responsibilities: [
+      'Designed the measurement pass and what it had to produce to make every later step traceable.',
+      'Designed the six scoring scales and the weighting that stops a weak dimension being averaged away.',
+      'Built the clip selection so that boundaries land on real speech and action boundaries.',
+      'Built the editing modes, the loudness normalisation and the 9:16 reframing.',
+      'Built the voice-over feature, including the constraint that it measures a delivery and never clones a voice.',
+    ],
+
+    process: [
+      {
+        title: 'Decide what counts as evidence first',
+        body: 'Before any scoring existed, the rule was set: a judgement that cannot point at a measurement and a timecode does not ship. That single constraint determined most of the architecture.',
+      },
+      {
+        title: 'Score in a way that cannot be gamed by an average',
+        body: 'The 40/60 weighting toward the weakest scale came from testing against real footage where a plain average rated an unwatchable video highly because five of six dimensions were fine.',
+      },
+      {
+        title: 'Let the output count be an output',
+        body: 'Clip count is whatever the footage supports. Making it a target is exactly how these tools start inventing, and inventing is the failure this application exists to avoid.',
+      },
+    ],
+
+    challenges: [
+      {
+        title: 'A score that flattered bad video',
+        body: `The first scoring model averaged the six scales. A recording with good exposure,
+          good framing, reasonable pacing and almost inaudible speech scored well, because one
+          catastrophic dimension was diluted by five acceptable ones. That is precisely backwards:
+          a video nobody can hear is not a good video with one flaw, it is unusable.
+
+          Weighting the final score 60 per cent toward the weakest scale fixed it. The general
+          point is that an aggregate is a choice about what you are willing to hide, and the
+          default choice — the mean — hides exactly the thing you most need to know.`,
+      },
+      {
+        title: 'Clips that cut people off mid-word',
+        body: `Choosing clip boundaries by score alone produces clips that start halfway through a
+          sentence and end halfway through another. Technically those are the highest-scoring
+          windows; they are also unwatchable. Boundaries are now snapped to real speech and action
+          boundaries from the transcript and the shot-change data, which sometimes means a slightly
+          lower-scoring window — and a clip somebody can actually watch.`,
+      },
+      {
+        title: 'It measures, it does not understand',
+        body: `This is the honest limit of the application and it is worth stating plainly. It
+          measures light, movement, cuts, levels and speech. It does not know what is happening in
+          the footage. It can tell you a moment is loud, fast and visually busy; it cannot tell you
+          the moment is funny. For commentary work this is the gap that matters most, and it is
+          unresolved rather than solved.`,
+      },
+      {
+        title: 'It does not package',
+        body: `The application runs, but the distributable build fails and there is no application
+          icon. It is therefore something I can run and demonstrate, not something a stranger can
+          install — which is the difference between a working program and a released product, and
+          why its status here says built rather than released.`,
+      },
+    ],
+
+    testing: [
+      {
+        title: 'Run against real footage, not samples',
+        body: 'Scoring was developed against actual long-form recordings, which is how the averaging flaw surfaced. Synthetic test clips would not have exposed it.',
+      },
+      {
+        title: 'Output levels verified by measurement',
+        body: 'Delivered cuts are checked against the loudness and true-peak targets rather than judged by ear.',
+      },
+      {
+        title: 'Boundary checking on clips',
+        body: 'Clip starts and ends are validated against transcript word timings, so a clip cutting into a word is a detectable failure.',
+      },
+      {
+        title: 'Traceability spot-checks',
+        body: 'Notes and clips are checked by following their timecodes back into the source, which is the only way to confirm the no-invention rule actually holds.',
+      },
+    ],
+
+    statusDetail: {
+      built: [
+        'Single-pass analysis of picture and sound, with per-track audio measurement and a word-timed transcript.',
+        'Six scoring scales with the measurements behind each, and weighting that surfaces the weakest.',
+        'Actionable notes with timecodes back to the source.',
+        'Six editing modes, a trailer mode and an arbitrary-length cut.',
+        'Short-form clips with real boundaries, 9:16 reframing that follows the action, and word-timed captions.',
+        'Voice-over that measures a delivery style without copying anyone.',
+      ],
+      notBuilt: [
+        'It does not package. The distributable build fails and there is no application icon, so it cannot be installed by anyone else. That is why its status is built rather than released.',
+        'It measures but does not comprehend. It cannot tell you why a moment is good, only that it is loud, fast or visually busy.',
+        'No automated regression suite for the scoring model, so a change to the weighting is validated by hand against known footage.',
+      ],
+    },
+
+    future: [
+      'Fix packaging and ship an installable build, which is the only thing between this and being a released product.',
+      'Add scene understanding so the notes can say why a moment works, not only that it measures well.',
+      'Build a regression set of scored footage so changes to the scoring model are checked automatically.',
     ],
   },
 ];
