@@ -370,7 +370,7 @@ export const diagrams = {
         },
         {
           nodes: [
-            { t: 'Static HTML', sub: '18 pages', kind: 'proc' },
+            { t: 'Static HTML', sub: '19 pages', kind: 'proc' },
             { t: 'ATS .docx', sub: 'WordprocessingML + zlib', kind: 'proc' },
             { t: 'Share image', sub: 'hand-written PNG encoder', kind: 'proc' },
           ],
@@ -426,6 +426,35 @@ export const diagrams = {
             { t: 'Short-form clips', sub: '9:16, captions, action-tracked', kind: 'out' },
             { t: 'Voice-over', sub: 'delivery measured, never cloned', kind: 'out' },
           ],
+        },
+      ],
+    }),
+
+  yokotv: () =>
+    flow({
+      id: 'yoko',
+      title: 'YokoTV delivery path',
+      desc:
+        'A single-page client behind a CDN, with channels organised editorially rather than dumped as a list, and everything that is not the video deferred until the viewer interacts.',
+      rows: [
+        {
+          nodes: [
+            { t: 'Viewer', sub: 'phone · laptop · smart TV', kind: 'in' },
+            { t: 'Search or direct channel link', kind: 'in' },
+          ],
+        },
+        { nodes: [{ t: 'CDN', sub: 'static client, cached at the edge', kind: 'proc' }] },
+        { nodes: [{ t: 'Single-page client', sub: 'React, built with Vite', kind: 'proc' }] },
+        {
+          nodes: [
+            { t: 'Catalogue', sub: '8,118 channels · 33 categories · local first', kind: 'store' },
+            { t: 'Node / Express service', kind: 'proc' },
+          ],
+          note: 'No account, no subscription: there is no user store and no auth to operate.',
+        },
+        {
+          nodes: [{ t: 'Player', sub: 'adaptive, with a data saver for slow links', kind: 'out' }],
+          note: 'Third-party scripts attach only on first interaction, or a timed fallback.',
         },
       ],
     }),

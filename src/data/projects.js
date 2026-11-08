@@ -768,7 +768,7 @@ export const projects = [
   {
     slug: 'portfolio-site',
     keyPoints: [
-      'A zero-dependency static site generator in Node: 18 pages, no framework, no web fonts, nothing to install.',
+      'A zero-dependency static site generator in Node: 19 pages, no framework, no web fonts, nothing to install.',
       'A verification gate of 23 rules plus 27 unit tests, failing the build on a broken link, a duplicate id, an unnamed button or an unfilled template slot.',
       'An ATS-safe .docx written directly as WordprocessingML, and a share image from a hand-rolled PNG encoder — standard library only.',
     ],
@@ -790,7 +790,7 @@ export const projects = [
 
     metrics: [
       { label: 'Runtime dependencies', value: '0', note: 'Nothing to install, builds offline' },
-      { label: 'Pages generated', value: '18', note: 'From plain data files' },
+      { label: 'Pages generated', value: '19', note: 'From plain data files' },
       { label: 'Build time', value: '~50 ms', note: 'Measured over repeated runs' },
       { label: 'Verification rules', value: '23', note: 'Including accessibility; any failure fails the build' },
     ],
@@ -1127,6 +1127,191 @@ export const projects = [
       'Fix packaging and ship an installable build, which is the only thing between this and being a released product.',
       'Add scene understanding so the notes can say why a moment works, not only that it measures well.',
       'Build a regression set of scored footage so changes to the scoring model are checked automatically.',
+    ],
+  },
+  // ─────────────────────────────────────────────────────────────────────────────
+  {
+    slug: 'yokotv',
+    keyPoints: [
+      'A live television service carrying 8,118 free channels across 33 categories, with South African broadcasters first.',
+      'No account, no subscription and no install: it runs in a browser on a phone, a laptop or a smart TV, with a data saver for slow connections.',
+      'Third-party scripts are deferred until the viewer actually interacts, so the page is not paying for them before anyone has watched anything.',
+    ],
+    meta:
+      'A live TV streaming service carrying 8,118 free channels across 33 categories, built for South African connections and devices. No account, no install.',
+    title: 'YokoTV',
+    subtitle: 'Free live television for South Africa, in the browser',
+    tagline:
+      'A streaming service carrying 8,118 free live channels — SABC and South African community broadcasters first, then news, sport, music and film from everywhere else — with no account, no subscription and nothing to install.',
+    category: 'AI Product Development',
+    featured: true,
+    order: 7,
+    status: STATUS.shipping,
+    period: '2026 – present',
+    role: 'Sole builder and operator',
+    links: [
+      { label: 'yokotv.online', url: 'https://yokotv.online', note: 'The live service' },
+    ],
+    oneLiner:
+      'The largest thing here by surface area: thousands of live streams, organised, searchable and fast enough to use on a South African mobile connection.',
+
+    metrics: [
+      { label: 'Live channels', value: '8,118', note: 'Stated on the service itself' },
+      { label: 'Categories', value: '33', note: 'South African channels listed first' },
+      { label: 'Account required', value: 'None', note: 'No sign-up, no subscription, no app' },
+      { label: 'Clients', value: 'Web + desktop', note: 'Browser, plus an Electron build with an updater' },
+    ],
+
+    overview: `YokoTV is a live television service. It carries 8,118 free channels organised into
+      33 categories, and it deliberately opens with South African broadcasters — SABC 1, SABC 3,
+      SABC News, SABC Education — alongside community stations like Soweto TV, Cape Town TV and
+      1KZN TV, before the international news, sport, music and film channels.
+
+      It runs in a browser with no account, no subscription and nothing to install, on a phone, a
+      laptop or a smart TV. There is also a desktop build with its own updater for people who
+      would rather have an application.`,
+
+    problem: `Free live television exists in quantity on the open internet, and it is close to
+      unusable in practice. The streams are scattered, unlabelled, inconsistently available, and
+      almost none of it is organised around what a South African viewer actually wants to watch
+      first.
+
+      There is a second problem that most streaming interfaces ignore entirely: the connection.
+      A player that assumes broadband behaves badly on a mobile connection outside a metro,
+      which is exactly where a free service like this is most useful.`,
+
+    solution: `Organise it properly and make it cheap to use.
+
+      Thousands of streams are grouped into 33 categories with South African channels first,
+      which is an editorial decision rather than a technical one and is most of what makes the
+      service usable. Every channel is individually addressable and searchable, so a viewer
+      looking for one station is not browsing a wall of thumbnails.
+
+      Delivery is built for the connection rather than against it. A data saver keeps playback
+      stable on a slow link, and the interface is a single-page application served behind a CDN
+      so navigating between channels does not mean a full page load each time.
+
+      The performance decision worth naming is what happens on arrival: third-party scripts are
+      not loaded with the page. They attach on the first real interaction — a scroll, a tap, a
+      key — or after a delay if none comes. A visitor who opens the site and starts watching is
+      never made to wait for anything that is not the video.`,
+
+    stack: [
+      { group: 'Front end', items: ['React', 'Vite', 'Single-page application', 'Responsive to TV, laptop and phone'] },
+      { group: 'Server', items: ['Node.js', 'Express', 'CDN in front'] },
+      { group: 'Desktop', items: ['Electron build', 'Self-updating installer'] },
+      { group: 'Delivery', items: ['Adaptive playback', 'Data saver for slow connections'] },
+      { group: 'Discovery', items: ['Per-channel routes', 'Structured data with site search', 'en-ZA targeting'] },
+    ],
+
+    diagram: 'yokotv',
+
+    responsibilities: [
+      'Product definition: what the service carries, how it is organised, and what it refuses to require of a viewer.',
+      'The editorial decision to lead with South African and community broadcasters rather than international channels.',
+      'Front-end application, responsive layout and the channel browsing and search experience.',
+      'Server, deployment and day-to-day operation of a live service.',
+      'The desktop build and its update mechanism.',
+      'Performance work, including deferring third-party scripts until a viewer interacts.',
+      'Technical SEO: per-channel routes, structured data and regional targeting.',
+    ],
+
+    process: [
+      {
+        title: 'Decide what the viewer must not be asked for',
+        body: 'No account, no subscription, no install. Those three constraints were fixed before anything else, and they rule out most of the obvious architectures — there is no user table, no auth, no billing, and therefore far less to operate and far less to get wrong.',
+      },
+      {
+        title: 'Organise before you scale',
+        body: 'Thousands of unlabelled streams are worse than a hundred organised ones. Categorisation and putting local broadcasters first is the work that turns a list into a service.',
+      },
+      {
+        title: 'Build for the worst connection you expect',
+        body: 'A data saver and deferred third-party loading are both decisions made for a viewer on mobile data, not for a benchmark score on a desk.',
+      },
+    ],
+
+    challenges: [
+      {
+        title: 'Making a large catalogue feel small',
+        body: `Eight thousand channels is a liability as much as an asset. Presented as a flat
+          list it is unusable, and the natural instinct — infinite scroll through thumbnails —
+          makes it worse, because a viewer who wants SABC News does not want to browse.
+
+          The answer was editorial rather than technical: thirty-three categories, local
+          broadcasters first, and direct addressable routes for individual channels so search and
+          links land on a station instead of a homepage. The hard part of a large catalogue is
+          almost never storing it.`,
+      },
+      {
+        title: 'Everything that is not the video is a cost',
+        body: `A streaming page that loads analytics, advertising and tracking before the player
+          is working is spending a viewer's bandwidth and attention on the wrong thing — and on a
+          mobile connection that delay is the difference between watching and leaving.
+
+          Third-party scripts here are bound to the first real interaction, or a timed fallback if
+          none happens. It is a small amount of code and one of the highest-value decisions on the
+          site, because it protects exactly the first ten seconds that determine whether someone
+          stays.`,
+      },
+      {
+        title: 'Free streams are not stable infrastructure',
+        body: `Publicly available streams change endpoint, change quality and go off air without
+          notice, and no amount of care at build time prevents that. A catalogue of this size is
+          therefore never fully correct at any given moment. Any honest description of this
+          service has to include the fact that some proportion of it is broken right now, and
+          that keeping the catalogue healthy is continuous work rather than a solved problem.`,
+      },
+      {
+        title: 'Two clients, one service',
+        body: `Shipping a browser experience and an Electron desktop build means every change has
+          two places to be right, and the desktop build adds an update mechanism that has to keep
+          working unattended on someone else's machine. That cost is real and it is the reason
+          most small projects should ship one client rather than two.`,
+      },
+    ],
+
+    testing: [
+      {
+        title: 'Verified live, end to end',
+        body: 'The service is publicly reachable and can be checked by anyone: open it, pick a channel, watch it. That is a stronger form of verification than anything I could write here.',
+      },
+      {
+        title: 'Device and connection testing',
+        body: 'Exercised on phone, laptop and television form factors, and on constrained connections — which is where the data saver earns its place.',
+      },
+      {
+        title: 'Deferred-script behaviour',
+        body: 'Confirmed by inspecting what the page actually loads before a viewer interacts, rather than assuming the intent matched the implementation.',
+      },
+      {
+        title: 'Search and structured data',
+        body: 'Site search and the published structured data are verifiable from the live page source.',
+      },
+    ],
+
+    statusDetail: {
+      built: [
+        'Live, publicly reachable service carrying 8,118 channels across 33 categories.',
+        'No account, no subscription and no install required.',
+        'Responsive across phone, laptop and television.',
+        'Data saver for constrained connections.',
+        'Electron desktop build with a self-updating installer.',
+        'Per-channel routes, site search and structured data for discovery.',
+        'Third-party scripts deferred until first interaction.',
+      ],
+      notBuilt: [
+        'Stream health is not a solved problem. Free public streams change and disappear without notice, so a catalogue this size always contains some proportion that is currently broken.',
+        'No audience, usage or revenue figures appear here. I have not published any and will not until there are measured ones worth publishing.',
+        'No automated test suite or verification gate comparable to the one on this portfolio. Changes are verified by hand.',
+        'The source is not on this machine — it is deployed server-side — so this case study describes the service and its decisions rather than walking through code.',
+      ],
+    },
+
+    future: [
+      'Automated stream health checking, so a dead channel is detected and demoted rather than found by a viewer.',
+      'A verification gate on deploy, matching the one used on this portfolio.',
+      'Measured performance budgets for first frame on a constrained connection, rather than relying on the deferral alone.',
     ],
   },
 ];
