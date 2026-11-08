@@ -21,6 +21,13 @@ export default function contact() {
       primary: true,
     },
     {
+      k: 'GitHub',
+      v: profile.contact.githubLabel,
+      href: profile.contact.github,
+      note: 'The source for this site, including its build and verification tooling.',
+      primary: false,
+    },
+    {
       k: 'LinkedIn',
       v: profile.contact.linkedinLabel,
       href: profile.contact.linkedin,

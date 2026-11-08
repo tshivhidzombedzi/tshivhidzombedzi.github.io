@@ -158,6 +158,7 @@ ${content}
         <ul>
           <li><a href="mailto:${esc(profile.contact.email)}">${esc(profile.contact.emailLabel)}</a></li>
           <li><a href="${esc(profile.contact.linkedin)}" target="_blank" rel="noopener noreferrer">LinkedIn<span class="ext" aria-hidden="true">↗</span></a></li>
+          <li><a href="${esc(profile.contact.github)}" target="_blank" rel="noopener noreferrer">GitHub<span class="ext" aria-hidden="true">&#8599;</span></a></li>
           <li><a href="/cv/">Curriculum vitae</a></li>
         </ul>
       </div>

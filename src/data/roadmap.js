@@ -33,12 +33,12 @@ export const roadmap = [
   {
     n: 2,
     title: 'Git and GitHub',
-    status: 'active',
+    status: 'complete',
     why: 'My work is unreviewable by anyone else, which is a hiring problem before it is a technical one. No employer can assess code they cannot see.',
     proof:
       'This portfolio repository published publicly, with meaningful commit history, a README that explains the architecture, and at least one reviewed pull request.',
     evidence:
-      'Local commits across fourteen repositories. No remote, no branching workflow, no pull request ever reviewed — so the collaborative half is genuinely absent.',
+      'Done, in part: this portfolio is published at github.com/tshivhidzombedzi1-lgtm/portfolio with a documented commit history, a README explaining the architecture, and continuous deployment that gates on a verification step. The collaborative half is still absent — no reviewed pull request, no shared branch, no resolved conflict — so the next move on this step is working with someone else, not more commits of my own.',
     targetSkill: 'Git / GitHub',
   },
   {

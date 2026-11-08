@@ -57,9 +57,10 @@ export const profile = {
     phone: null, // Omitted deliberately - see private/PROPOSED-PUBLIC-INVENTORY.md.
     linkedin: 'https://www.linkedin.com/in/tshivhidzo-mbedzi-a74040233/',
     linkedinLabel: 'linkedin.com/in/tshivhidzo-mbedzi',
-    // Checked 2026-11-07: no public account exists. Set this once the portfolio repository
-    // is published.
-    github: null,
+    // Published 2026-11-08. Note this is a different account from the one branded for his
+    // private business, which is deliberately not linked anywhere.
+    github: 'https://github.com/tshivhidzombedzi1-lgtm/portfolio',
+    githubLabel: 'github.com/tshivhidzombedzi1-lgtm',
   },
 
   // Private business properties are deliberately not listed here. This portfolio is for
