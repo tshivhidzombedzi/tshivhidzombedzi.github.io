@@ -1,0 +1,18 @@
+# Normalise text files, and leave binaries alone.
+#
+# Without this, git on Windows treats a PDF or a .docx as text (they are mostly ASCII) and
+# converts line endings on checkout, which corrupts the file. The copies in this repository
+# were fine, but a fresh clone on Windows would not have been.
+
+* text=auto eol=lf
+
+*.pdf   binary
+*.docx  binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+*.mp4   binary
