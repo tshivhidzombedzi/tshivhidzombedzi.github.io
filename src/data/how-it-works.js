@@ -214,7 +214,7 @@ export const howItWorks = {
       },
       {
         t: 'A gate measures the output',
-        d: 'Sixteen rules run against the built site: every link and asset resolves, every anchor exists, each page has exactly one top-level heading, a description and a canonical URL, every image has alternative text, and no placeholder or unfilled template slot survives.',
+        d: 'Twenty-three rules run against the built site: every link and asset resolves, every anchor exists, each page has exactly one top-level heading, a description and a canonical URL, every image has alternative text, every landmark is present, no id is duplicated, no link or button lacks an accessible name, and no placeholder or unfilled template slot survives.',
       },
       {
         t: 'Nothing publishes unless it passes',

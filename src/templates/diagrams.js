@@ -356,7 +356,7 @@ export const diagrams = {
       id: 'site',
       title: 'Portfolio build and release pipeline',
       desc:
-        'Content lives as plain data, a dependency-free generator renders it to static HTML, and a sixteen-rule gate measures the output. A failure stops the release and leaves the previous version live.',
+        'Content lives as plain data, a dependency-free generator renders it to static HTML, and a twenty-three-rule gate measures the output. A failure stops the release and leaves the previous version live.',
       rows: [
         {
           nodes: [
@@ -378,7 +378,7 @@ export const diagrams = {
         {
           nodes: [
             {
-              t: 'Verification gate — 16 rules',
+              t: 'Verification gate — 23 rules',
               sub: 'links · anchors · headings · alt text · metadata · placeholders',
               kind: 'gate',
             },

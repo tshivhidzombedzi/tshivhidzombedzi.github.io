@@ -1,5 +1,6 @@
 import { esc, prose, list, when, section, link } from '../lib/html.js';
 import projects from '../data/projects.js';
+import moreWork from '../data/more-work.js';
 import { renderDiagram } from '../templates/diagrams.js';
 import { howItWorks } from '../data/how-it-works.js';
 
@@ -53,6 +54,33 @@ ${section({
     'a deterministic simulation engine, and the generator that builds this site. Each is ' +
     'described in full, including what is not finished.',
   body: `<div class="cards cards--2">${list(projects.slice().sort((a, b) => a.order - b.order), card)}</div>`,
+})}
+
+${section({
+  eyebrow: 'Also built',
+  title: 'Smaller work, listed as what it is',
+  className: 'alt',
+  lead:
+    'Neither of these is big enough for a full case study, and writing one would stretch it. ' +
+    'They are here because they are real and checkable.',
+  body: `
+  <div class="more-list">
+    ${list(
+      moreWork,
+      (m) => `
+    <article class="more">
+      <div class="more-head">
+        <h3>${esc(m.t)}</h3>
+        <p class="more-kind">${esc(m.kind)}</p>
+      </div>
+      <div class="more-body">
+        <div class="rich">${prose(m.d)}</div>
+        <p class="more-why"><span class="more-k">Why it is here</span> ${esc(m.why)}</p>
+        <p class="more-status">${esc(m.status)}</p>
+      </div>
+    </article>`,
+    )}
+  </div>`,
 })}`;
 
   return {

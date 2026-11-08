@@ -769,7 +769,7 @@ export const projects = [
     slug: 'portfolio-site',
     keyPoints: [
       'A zero-dependency static site generator in Node: 18 pages, no framework, no web fonts, nothing to install.',
-      'A verification gate of 16 rules that fails the build on a broken link, a missing heading or an unfilled template slot.',
+      'A verification gate of 23 rules plus 27 unit tests, failing the build on a broken link, a duplicate id, an unnamed button or an unfilled template slot.',
       'An ATS-safe .docx written directly as WordprocessingML, and a share image from a hand-rolled PNG encoder — standard library only.',
     ],
     meta:
@@ -792,7 +792,7 @@ export const projects = [
       { label: 'Runtime dependencies', value: '0', note: 'Nothing to install, builds offline' },
       { label: 'Pages generated', value: '18', note: 'From plain data files' },
       { label: 'Build time', value: '~50 ms', note: 'Measured over repeated runs' },
-      { label: 'Verification rules', value: '16', note: 'Any failure fails the build' },
+      { label: 'Verification rules', value: '23', note: 'Including accessibility; any failure fails the build' },
     ],
 
     overview: `This site is produced by a build system I wrote, with no framework and no
@@ -818,7 +818,7 @@ export const projects = [
       five years.
 
       The part that matters is the gate. A separate program walks the built output and checks
-      sixteen rules: every internal link and asset resolves, every in-page anchor exists, each
+      23 rules: every internal link and asset resolves, every in-page anchor exists, each
       page has exactly one top-level heading and a description and a canonical URL, every image
       carries alternative text, no external link opens without the right rel attribute, and no
       placeholder marker or unfilled template slot survives. It exits non-zero on any failure,
@@ -931,7 +931,8 @@ export const projects = [
     statusDetail: {
       built: [
         'Full static site generator with content, templates, diagrams and a local preview server.',
-        'Verification gate of sixteen rules, wired into continuous deployment.',
+        'Verification gate of twenty-three rules including accessibility, wired into continuous deployment.',
+        '27 unit tests covering escaping, the base-path rewrite and the editorial invariants, run in CI before the build.',
         'ATS-safe .docx generator written directly against the WordprocessingML format.',
         'PNG encoder for the social share image, standard library only.',
         'Subpath-aware builds, so the same source deploys to a root domain or a project subpath.',
@@ -939,8 +940,6 @@ export const projects = [
       ],
       notBuilt: [
         'It is not published yet. The repository is local and the site has not been deployed, which is why this page carries no live link.',
-        'No automated accessibility audit. Accessibility was built in deliberately and checked by hand, but nothing in the gate enforces it.',
-        'No automated tests for the generator itself. The gate tests the output, not the code that produced it.',
         'No image optimisation pipeline, because the site currently has almost no images.',
       ],
     },

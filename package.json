@@ -12,7 +12,9 @@
     "serve": "node serve.js",
     "dev": "node build.js && node serve.js",
     "check": "node check.js",
-    "cv": "node tools/make-cv.js"
+    "cv": "node tools/make-cv.js",
+    "test": "node --test test.js",
+    "verify": "node --test test.js && node build.js && node check.js"
   },
   "author": "Tshivhidzo Mbedzi",
   "license": "UNLICENSED"

@@ -216,6 +216,60 @@ async function checkHtml(file, html) {
     if (a.alt === undefined) fail(rel, `<img> without alt: ${a.src || '(no src)'}`);
   }
 
+  /* ---- accessibility ----
+     Static checks only. These cannot prove a page is accessible, but each one catches a
+     real defect that is invisible when the page looks fine. Contrast and focus order still
+     need a human. */
+
+  // Landmarks: a screen-reader user navigates by these before anything else.
+  for (const [tag, label] of [['<main', 'main'], ['<header', 'header'], ['<footer', 'footer'], ['<nav', 'nav']]) {
+    if (!html.includes(tag)) fail(rel, `missing <${label}> landmark`);
+  }
+
+  // A skip link must be present and must be the first focusable thing on the page.
+  const firstFocusable = html.search(/<(a\s[^>]*href|button)/i);
+  const skipAt = html.search(/class="skip"/);
+  if (skipAt === -1) fail(rel, 'no skip link');
+  else if (firstFocusable !== -1 && skipAt > firstFocusable + 200) {
+    warn(rel, 'skip link is not the first focusable element');
+  }
+
+  // Duplicate ids break every aria reference and every in-page anchor that points at them.
+  const idList = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+  const dupes = idList.filter((v, i) => idList.indexOf(v) !== i);
+  for (const d of [...new Set(dupes)]) fail(rel, `duplicate id="${d}"`);
+
+  // aria-controls / aria-labelledby pointing at nothing is worse than not being there.
+  for (const m of html.matchAll(/aria-(controls|labelledby|describedby)="([^"]+)"/g)) {
+    for (const ref of m[2].split(/\s+/).filter(Boolean)) {
+      if (!ids.has(ref)) fail(rel, `aria-${m[1]} references missing id "${ref}"`);
+    }
+  }
+
+  // A link or button with no text and no label is unusable and unannounceable.
+  for (const m of html.matchAll(/<a\s([^>]*)>([\s\S]*?)<\/a>/gi)) {
+    const a = attrs(m[1]);
+    const text = m[2].replace(/<[^>]*>/g, '').replace(/&[a-z]+;/g, '').trim();
+    if (!text && !a['aria-label'] && !a['aria-labelledby'] && !/<img/i.test(m[2])) {
+      fail(rel, `link with no accessible name: ${a.href || '(no href)'}`);
+    }
+  }
+  for (const m of html.matchAll(/<button\s?([^>]*)>([\s\S]*?)<\/button>/gi)) {
+    const b = attrs(m[1] || '');
+    const text = m[2].replace(/<[^>]*>/g, '').trim();
+    if (!text && !b['aria-label'] && !b['aria-labelledby']) {
+      fail(rel, 'button with no accessible name');
+    }
+  }
+
+  // An inline SVG presented as an image needs a name, or it is announced as nothing.
+  for (const m of html.matchAll(/<svg\s([^>]*)>/gi)) {
+    const sv = attrs(m[1]);
+    if (sv.role === 'img' && !sv['aria-labelledby'] && !sv['aria-label']) {
+      fail(rel, 'svg role="img" without an accessible name');
+    }
+  }
+
   /* ---- og:image must exist ---- */
   const og = html.match(/<meta\s+property="og:image"\s+content="([^"]*)"/i);
   if (og) {

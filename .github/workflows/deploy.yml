@@ -38,6 +38,9 @@ jobs:
 
       # No npm install: this project has no dependencies.
 
+      - name: Unit tests
+        run: node --test test.js
+
       - name: Generate CV and share image
         run: |
           node tools/make-cv.js

@@ -1435,6 +1435,59 @@ section.alt .card {
   }
 }
 
+/* "Also built": deliberately plainer than a case-study card, so the hierarchy between
+   load-bearing work and smaller work is visible at a glance. */
+.more-list {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+.more {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.6rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.more-head h3 {
+  font-size: 1.0625rem;
+}
+.more-kind {
+  font-size: 0.75rem;
+  color: var(--text-4);
+  margin-top: 0.3rem;
+  font-family: var(--mono);
+}
+.more-body .rich p {
+  font-size: 0.9375rem;
+}
+.more-why {
+  font-size: 0.9062rem;
+  color: var(--text-2);
+  margin-top: 0.9rem;
+}
+.more-k {
+  display: block;
+  font-size: 0.6562rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-4);
+  margin-bottom: 0.25rem;
+}
+.more-status {
+  font-size: 0.8125rem;
+  color: var(--text-4);
+  margin-top: 0.8rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--line);
+}
+@media (max-width: 760px) {
+  .more {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
 /* ---------- diagrams ---------- */
 .diagram {
   margin: 0;

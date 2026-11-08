@@ -75,7 +75,7 @@ export const services = [
       'An automated check that exits non-zero on failure',
       'Documentation of what it does and does not catch',
     ],
-    evidence: 'A sixteen-rule gate that blocks this site from publishing if anything is broken',
+    evidence: 'A twenty-three-rule gate, including accessibility, that blocks this site from publishing if anything is broken',
     href: '/projects/portfolio-site/',
   },
   {
