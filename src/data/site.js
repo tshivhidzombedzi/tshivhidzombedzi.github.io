@@ -27,7 +27,7 @@ export const site = {
 
   locale: 'en_ZA',
   lang: 'en',
-  themeColor: '#0a0a0b',
+  themeColor: '#ffffff',
   ogImage: '/assets/img/og.png',
 
   nav: [

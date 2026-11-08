@@ -25,40 +25,55 @@
    ============================================================================= */
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Neutral greys, deliberately not blue-tinted — a blue cast over an entire page
-     is one of the strongest "template" signals. */
-  --bg: #0a0a0b;
-  --bg-2: #0d0d0f;
-  --surface: #121214;
-  --surface-2: #161619;
-  --line: #222225;
-  --line-2: #2c2c31;
-  --line-3: #3a3a41;
+  /* Palette from the brief. Deep navy #101B2B, dark charcoal #202938, white, light grey
+     #F3F5F7, accent blue #3978D5. Greys between them are derived, not invented from a
+     different family, so the whole page reads as one system. */
+  --bg: #ffffff;
+  --bg-2: #f3f5f7;
+  --surface: #ffffff;
+  --surface-2: #f7f9fa;
+  --surface-3: #eef1f4;
+  --line: #e3e7ec;
+  --line-2: #d3d9e0;
+  --line-3: #b3bcc7;
 
-  --text: #ededef;
-  --text-2: #b2b2b9;
-  --text-3: #8a8a92;
-  --text-4: #6a6a72;
+  --text: #101b2b;   /* deep navy: headings and emphasis */
+  --text-2: #202938; /* dark charcoal: body copy */
+  --text-3: #4e5767;
+  --text-4: #6b7585;
 
-  --accent: #4d7fff;
-  --accent-2: #7aa0ff;
-  --accent-ink: #050a17;
-  --accent-wash: rgba(77, 127, 255, 0.1);
-  --accent-line: rgba(77, 127, 255, 0.3);
+  /* ACCESSIBILITY NOTE, and the reason there are two blues.
+     #3978D5 on white measures about 4.36:1, which is just under the 4.5:1 AA threshold for
+     normal-size text. So the brief's blue is used for fills, rules and markers — where
+     contrast rules do not apply — and a darker blue is used wherever the colour carries
+     text, such as links. The brand colour is unchanged; it is simply not asked to do a job
+     it cannot do legibly. */
+  --accent: #3978d5;
+  --accent-text: #2b5fb8;
+  --accent-2: #2b5fb8;
+  --accent-ink: #ffffff;
+  --accent-wash: rgba(57, 120, 213, 0.08);
+  --accent-line: rgba(57, 120, 213, 0.32);
 
-  --good: #4ea97f;
-  --beta: #c08a3e;
-  --quiet: #71717a;
+  --good: #1f7a4d;
+  --beta: #9a6212;
+  --quiet: #6b7585;
 
-  --font: ui-sans-serif, -apple-system, "Segoe UI Variable Text", "Segoe UI", Inter,
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono: ui-monospace, "Cascadia Mono", "SF Mono", Consolas, "Liberation Mono", monospace;
+  /* Aptos and Calibri first, per the brief, then Inter and Arial. All four are named; the
+     stack falls through to whichever the device has. No web fonts, so nothing is fetched. */
+  --font: Aptos, "Segoe UI Variable Text", "Segoe UI", Calibri, Inter, system-ui,
+    -apple-system, Arial, sans-serif;
+  --mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
 
   --wrap: 1120px;
-  --r: 4px;
-  --r-sm: 3px;
+  --r: 6px;
+  --r-sm: 4px;
+
+  /* Subtle, as the brief asks. Used only on raised cards, never on flat sections. */
+  --shadow: 0 1px 2px rgba(16, 27, 43, 0.05), 0 1px 3px rgba(16, 27, 43, 0.06);
+  --shadow-lift: 0 2px 6px rgba(16, 27, 43, 0.07), 0 8px 24px rgba(16, 27, 43, 0.07);
 }
 
 /* ---------- reset ---------- */
@@ -100,7 +115,7 @@ ol {
   padding: 0;
 }
 a {
-  color: var(--accent-2);
+  color: var(--accent-text);
   text-decoration: none;
   text-underline-offset: 3px;
 }
@@ -148,7 +163,7 @@ h1 {
   top: -60px;
   z-index: 200;
   background: var(--text);
-  color: var(--bg);
+  color: #fff;
   font-weight: 600;
   font-size: 0.875rem;
   padding: 0.6rem 1rem;
@@ -241,13 +256,13 @@ section.alt {
 }
 .btn--primary {
   background: var(--text);
-  color: var(--bg);
+  color: #fff;
   border-color: var(--text);
   font-weight: 600;
 }
 .btn--primary:hover {
-  background: #fff;
-  border-color: #fff;
+  background: var(--text-2);
+  border-color: var(--text-2);
 }
 .btn--ghost:hover {
   border-color: var(--line-3);
@@ -311,7 +326,7 @@ section.alt {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 10, 11, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -337,13 +352,13 @@ section.alt {
   width: 30px;
   height: 30px;
   flex: none;
-  border: 1px solid var(--line-3);
-  border-radius: 2px;
+  background: var(--text);
+  border-radius: 3px;
   font-family: var(--mono);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: var(--text-2);
+  color: #fff;
 }
 .brand-text {
   display: flex;
@@ -626,14 +641,15 @@ section.alt {
   }
 }
 .card {
-  background: var(--bg);
+  background: var(--surface);
   padding: 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
 }
 section.alt .card {
-  background: var(--bg-2);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 .card h3 {
   font-size: 1rem;
@@ -823,8 +839,9 @@ section.alt .card {
   margin-top: 1.75rem;
   padding: 1rem 1.2rem;
   border: 1px solid var(--line);
-  border-left: 2px solid var(--line-3);
-  background: var(--surface);
+  border-left: 3px solid var(--line-3);
+  border-radius: var(--r-sm);
+  background: var(--bg-2);
   max-width: 76ch;
 }
 .head-note p {
@@ -876,8 +893,9 @@ section.alt .card {
 .callout {
   padding: 1.2rem 1.35rem;
   border: 1px solid var(--line);
-  border-left: 2px solid var(--line-3);
-  background: var(--surface);
+  border-left: 3px solid var(--line-3);
+  border-radius: var(--r-sm);
+  background: var(--bg-2);
   max-width: 74ch;
   margin-top: 1.5rem;
 }
@@ -970,7 +988,7 @@ section.alt .card {
 }
 .tag-strong--good {
   color: var(--good);
-  border-color: rgba(78, 169, 127, 0.35);
+  border-color: rgba(31, 122, 77, 0.35);
 }
 
 /* ---------- timeline ---------- */
@@ -1158,8 +1176,9 @@ section.alt .card {
   margin-top: 1.9rem;
   padding: 1.2rem 1.4rem;
   border: 1px solid var(--line);
-  border-left: 2px solid var(--accent);
-  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--bg-2);
   max-width: 78ch;
 }
 .inshort-k {
@@ -1287,9 +1306,10 @@ section.alt .card {
 .hard-part {
   margin-top: 1.9rem;
   padding: 1.4rem 1.6rem;
-  border: 1px solid var(--line-2);
-  border-left: 2px solid var(--accent);
-  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  background: var(--bg-2);
   max-width: 78ch;
 }
 .hard-part h3 {
@@ -1493,7 +1513,8 @@ section.alt .card {
   margin: 0;
   padding: 1.5rem 1.25rem 1rem;
   border: 1px solid var(--line);
-  background: var(--surface);
+  border-radius: var(--r);
+  background: var(--bg-2);
   overflow-x: auto;
 }
 .dg {
@@ -1543,14 +1564,14 @@ section.alt .card {
 }
 .dg-gate rect {
   fill: var(--bg-2);
-  stroke: rgba(192, 138, 62, 0.45);
+  stroke: rgba(154, 98, 18, 0.45);
 }
 .dg-gate .dg-t {
   fill: var(--beta);
 }
 .dg-out rect {
   fill: var(--bg-2);
-  stroke: rgba(78, 169, 127, 0.4);
+  stroke: rgba(31, 122, 77, 0.4);
 }
 .dg-out .dg-t {
   fill: var(--good);

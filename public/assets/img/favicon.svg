@@ -1,15 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TM monogram">
   <title>Tshivhidzo Mbedzi</title>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#4ea6ff"/>
-      <stop offset="1" stop-color="#0f5fb8"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="#07090c"/>
-  <rect x="2.5" y="2.5" width="59" height="59" rx="12" fill="none" stroke="url(#g)" stroke-width="2.5"/>
+  <rect width="64" height="64" rx="10" fill="#101B2B"/>
   <!-- T -->
-  <path d="M11 20h20v5.5h-7.2V45h-5.6V25.5H11z" fill="url(#g)"/>
+  <path d="M11 20h20v5.5h-7.2V45h-5.6V25.5H11z" fill="#FFFFFF"/>
   <!-- M -->
-  <path d="M34 45V20h5.4l5.6 11.4L50.6 20H56v25h-5.2V30.6l-5.1 10.2h-1.4L39.2 30.6V45z" fill="#e8edf4"/>
+  <path d="M34 45V20h5.4l5.6 11.4L50.6 20H56v25h-5.2V30.6l-5.1 10.2h-1.4L39.2 30.6V45z" fill="#3978D5"/>
 </svg>

@@ -118,13 +118,13 @@ function textWidth(str, scale) {
 
 /* ───────────────────────────── compose ───────────────────────────── */
 
-const BG_TOP = [13, 13, 15];
-const BG_BOT = [10, 10, 11];
-const ACCENT = [122, 160, 255];
-const TEXT = [237, 237, 239];
-const DIM = [138, 138, 146];
-const LINE = [34, 34, 37];
-const LINE_3 = [58, 58, 65];
+const BG_TOP = [255, 255, 255];
+const BG_BOT = [243, 245, 247];
+const ACCENT = [57, 120, 213];
+const TEXT = [16, 27, 43];
+const DIM = [78, 87, 103];
+const LINE = [227, 231, 236];
+const LINE_3 = [179, 188, 199];
 
 // 1. Vertical gradient background.
 for (let y = 0; y < H; y++) {
@@ -165,7 +165,7 @@ text('AI & TECHNOLOGY SPECIALIST', 124, 404, 3, ACCENT);
 
 // 6. Supporting lines.
 text('GENERATIVE AI - EVALUATION - AUTOMATION', 124, 448, 2, DIM);
-text('PRETORIA SOUTH AFRICA - OPEN TO REMOTE WORK', 124, 480, 2, [106, 106, 114]);
+text('PRETORIA SOUTH AFRICA - OPEN TO REMOTE WORK', 124, 480, 2, [107, 117, 133]);
 
 // 7. Bottom hairline.
 rect(0, H - 1, W, 1, LINE_3);
