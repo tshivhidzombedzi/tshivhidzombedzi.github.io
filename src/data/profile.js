@@ -9,9 +9,13 @@
 
 export const profile = {
   name: 'Tshivhidzo Mbedzi',
+  // Chosen by him 2026-11-08: formal name only, no quoted nickname. It matches his
+  // qualifications, his LinkedIn and his transcripts exactly, which is what matters for
+  // anything an employer verifies. `nickname` is retained because the Person structured
+  // data uses it as alternateName, so someone searching "Moss Mbedzi" still finds him.
   nickname: 'Moss',
-  displayName: 'Tshivhidzo "Moss" Mbedzi',
-  shortName: 'Moss Mbedzi',
+  displayName: 'Tshivhidzo Mbedzi',
+  shortName: 'Tshivhidzo Mbedzi',
 
   // Positioning (his own wording, kept consistent across site, CV and LinkedIn)
   role: 'AI & Technology Specialist',

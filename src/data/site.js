@@ -12,7 +12,7 @@ const envUrl = (typeof process !== 'undefined' && process.env && process.env.SIT
 
 export const site = {
   name: 'Tshivhidzo Mbedzi',
-  shortName: 'Moss Mbedzi',
+  shortName: 'Tshivhidzo Mbedzi',
   tagline: 'AI & Technology Specialist',
 
   // Checked available on 2026-11-07 and chosen as the recommended domain: his own full

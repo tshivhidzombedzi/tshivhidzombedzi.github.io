@@ -141,7 +141,7 @@ ${section({
     path: '/contact/',
     title: 'Contact',
     description:
-      'Contact Tshivhidzo "Moss" Mbedzi, AI & Technology Specialist in Pretoria, South Africa. ' +
+      'Contact Tshivhidzo Mbedzi, AI & Technology Specialist in Pretoria, South Africa. ' +
       'Open to remote AI evaluation, operations and support roles.',
     content,
     jsonLd: [
