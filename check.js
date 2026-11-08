@@ -21,6 +21,8 @@
 
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { join, dirname, resolve, relative, extname } from 'node:path';
+
+import site from './src/data/site.js';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
@@ -33,7 +35,11 @@ const DIST = join(ROOT, 'dist');
  */
 const BASE = (() => {
   try {
-    const u = process.env.SITE_URL || '';
+    // Must match how build.js derives it: the configured baseUrl, which SITE_URL overrides.
+    // Reading only the environment was a bug — once baseUrl carried the subpath in config,
+    // the checker resolved every asset against the wrong root and reported the whole site
+    // broken. A gate that disagrees with the build is worse than no gate.
+    const u = process.env.SITE_URL || site.baseUrl || '';
     const p = u ? new URL(u).pathname.replace(/\/+$/, '') : '';
     return p === '/' ? '' : p;
   } catch {
