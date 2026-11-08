@@ -81,7 +81,9 @@ export default function about() {
   <div class="wrap">
     <div class="who">
       <img class="who-img" src="${esc(profile.photo.src)}" width="80" height="80"
-           alt="Portrait of ${esc(profile.name)}" loading="lazy" decoding="async">
+           alt="Portrait of ${esc(profile.name)}" decoding="async">
+      <!-- Not lazy-loaded on purpose: it is above the fold and 3 kB, so deferring it only
+           delays the most prominent element on the page. -->
       <div>
         <p class="eyebrow">About me</p>
         <p class="who-name">${esc(profile.name)}</p>
