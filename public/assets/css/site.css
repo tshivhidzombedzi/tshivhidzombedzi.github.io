@@ -769,6 +769,36 @@ section.alt .card {
   justify-content: flex-start;
 }
 
+/* Portrait. Deliberately small: the only available source is 100x100, so anything larger
+   would be visibly soft. Swap the asset and raise this once a full-size original exists. */
+.who {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+.who-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  border: 1px solid var(--line-2);
+}
+.who .eyebrow {
+  margin-bottom: 0.35rem;
+}
+.who-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.who-role {
+  font-size: 0.8438rem;
+  color: var(--text-3);
+  margin-top: 0.1rem;
+}
+
 /* ---------- page heads ---------- */
 .page-head {
   padding-block: clamp(2.5rem, 5vw, 3.75rem) clamp(1.75rem, 3vw, 2.5rem);

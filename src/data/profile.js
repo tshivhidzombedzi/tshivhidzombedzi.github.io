@@ -36,6 +36,11 @@ export const profile = {
     source: 'hoshidub.com Organization schema',
   },
 
+  // Taken from his LinkedIn on 2026-11-08. LinkedIn only serves the 100x100 variant and
+  // rejects the larger sizes, so this is displayed small (80px) and must not be used as a
+  // hero image. Replace with the original from his LinkedIn data export when he supplies it.
+  photo: { src: '/assets/img/profile.jpg', maxDisplay: 80 },
+
   availability: 'Open to remote roles worldwide · Available immediately',
   timezone: 'SAST (UTC+2)',
 

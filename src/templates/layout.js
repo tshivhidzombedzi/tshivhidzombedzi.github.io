@@ -29,6 +29,7 @@ const personJsonLd = {
   jobTitle: profile.role,
   description: profile.summary,
   url: site.baseUrl + '/',
+  image: site.baseUrl + profile.photo.src,
   email: 'mailto:' + profile.contact.email,
   address: {
     '@type': 'PostalAddress',

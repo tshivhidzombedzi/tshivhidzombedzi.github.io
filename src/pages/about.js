@@ -79,7 +79,17 @@ export default function about() {
   const content = `
 <section class="page-head">
   <div class="wrap">
-    <p class="eyebrow">About me</p>
+    <div class="who">
+      <img class="who-img" src="${esc(profile.photo.src)}" width="80" height="80"
+           alt="Portrait of ${esc(profile.name)}" loading="lazy" decoding="async">
+      <div>
+        <p class="eyebrow">About me</p>
+        <p class="who-name">${esc(profile.name)}</p>
+        <p class="who-role">${esc(profile.role)} &middot; ${esc(profile.location.city)}, ${esc(
+          profile.location.country,
+        )}</p>
+      </div>
+    </div>
     <h1>I build real products with AI, and I am precise about what that means.</h1>
     <p class="page-lead">
       Independent technology builder in ${esc(profile.location.city)}, ${esc(profile.location.country)}.
