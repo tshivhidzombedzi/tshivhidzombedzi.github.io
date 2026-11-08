@@ -276,6 +276,51 @@ export const howItWorks = {
     },
   },
 
+  yokotv: {
+    intro: `Open a page, pick a channel, watch it. No account, no payment, nothing installed.
+      Behind that are a few decisions that are more commercial than technical.`,
+    steps: [
+      {
+        t: 'Nothing is asked of the viewer',
+        d: 'No sign-up, no subscription, no app. That is a product decision with large technical consequences: no user accounts, no authentication, no payment handling, no password resets, no personal data to protect. A great deal of what normally has to be built and operated simply does not exist here.',
+      },
+      {
+        t: 'The catalogue is organised, not just stored',
+        d: 'Eight thousand channels presented as a list is unusable. They are grouped into thirty-three categories with South African and community broadcasters first, which is an editorial decision rather than an engineering one — and it is most of what turns a pile of streams into something you would actually use.',
+      },
+      {
+        t: 'Every channel has its own address',
+        d: 'Individual channels are directly addressable and searchable, so a link or a search lands on the station rather than the front page. It is also what makes the service findable at all: people search for a channel name, not for a streaming site.',
+      },
+      {
+        t: 'The client is served from the edge',
+        d: 'A single-page application cached on a content network, with a Node service behind it. Moving between channels does not reload the page, which matters most on exactly the connections that can least afford a reload.',
+      },
+      {
+        t: 'Playback assumes a bad connection',
+        d: 'A data saver keeps streams stable on a slow link. The assumption is a mobile connection outside a metro, not an office line — which is where a free service like this is most useful and where most players behave worst.',
+      },
+      {
+        t: 'The advertising waits',
+        d: 'The ad script does not load with the page. It attaches on the first scroll, tap or keypress, or after a timed fallback. A viewer who arrives and immediately starts watching is never made to wait for it.',
+      },
+    ],
+    hardPart: {
+      t: 'The interesting part: choosing the viewer over the impression',
+      d: `This is an ad-funded service, so the commercial instinct is to load the advertising
+        immediately and start counting. Deferring it means some viewers leave before an
+        impression is ever recorded. That is a real cost, paid on purpose.
+
+        The reasoning is that on a slow mobile connection anything loading ahead of the player is
+        spending the viewer's bandwidth on the wrong thing, and the first ten seconds decide
+        whether they stay at all. Slightly fewer impressions, materially more people who stay
+        long enough to see one.
+
+        It is the decision here I would most want to defend in an interview, because it is not a
+        technical trick — it is a judgement about which short-term number to give up.`,
+    },
+  },
+
 };
 
 export default howItWorks;

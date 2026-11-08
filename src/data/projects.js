@@ -1158,7 +1158,7 @@ export const projects = [
     metrics: [
       { label: 'Live channels', value: '8,118', note: 'Stated on the service itself' },
       { label: 'Categories', value: '33', note: 'South African channels listed first' },
-      { label: 'Account required', value: 'None', note: 'No sign-up, no subscription, no app' },
+      { label: 'Cost to viewer', value: 'Free', note: 'Ad-funded: no sign-up, no subscription' },
       { label: 'Clients', value: 'Web + desktop', note: 'Browser, plus an Electron build with an updater' },
     ],
 
@@ -1169,7 +1169,12 @@ export const projects = [
 
       It runs in a browser with no account, no subscription and nothing to install, on a phone, a
       laptop or a smart TV. There is also a desktop build with its own updater for people who
-      would rather have an application.`,
+      would rather have an application.
+
+      It is free to the viewer and funded by advertising. That choice is what makes the rest of
+      the product possible: with no subscription there is no sign-up, no payment handling, no
+      user accounts and no password resets — and nothing standing between someone arriving and
+      watching.`,
 
     problem: `Free live television exists in quantity on the open internet, and it is close to
       unusable in practice. The streams are scattered, unlabelled, inconsistently available, and
@@ -1191,10 +1196,10 @@ export const projects = [
       stable on a slow link, and the interface is a single-page application served behind a CDN
       so navigating between channels does not mean a full page load each time.
 
-      The performance decision worth naming is what happens on arrival: third-party scripts are
-      not loaded with the page. They attach on the first real interaction — a scroll, a tap, a
-      key — or after a delay if none comes. A visitor who opens the site and starts watching is
-      never made to wait for anything that is not the video.`,
+      The performance decision worth naming is what happens on arrival: the advertising script
+      is not loaded with the page. It attaches on the first real interaction — a scroll, a tap, a
+      key — or after a delay if none comes. Since advertising is what funds the service, that is
+      deliberately choosing the viewer over the fastest possible impression.`,
 
     stack: [
       { group: 'Front end', items: ['React', 'Vite', 'Single-page application', 'Responsive to TV, laptop and phone'] },
@@ -1244,15 +1249,18 @@ export const projects = [
           almost never storing it.`,
       },
       {
-        title: 'Everything that is not the video is a cost',
-        body: `A streaming page that loads analytics, advertising and tracking before the player
-          is working is spending a viewer's bandwidth and attention on the wrong thing — and on a
-          mobile connection that delay is the difference between watching and leaving.
+        title: 'Delaying my own revenue on purpose',
+        body: `The service is ad-funded, so the obvious commercial instinct is to load the
+          advertising script immediately and start counting impressions. On a South African mobile
+          connection that instinct is wrong: anything loading before the player is spending a
+          viewer's bandwidth and attention on the wrong thing, and the delay is the difference
+          between watching and leaving.
 
-          Third-party scripts here are bound to the first real interaction, or a timed fallback if
-          none happens. It is a small amount of code and one of the highest-value decisions on the
-          site, because it protects exactly the first ten seconds that determine whether someone
-          stays.`,
+          So the ad script is bound to the first real interaction, with a timed fallback if none
+          comes. A viewer who opens the page and starts watching costs money before they earn any.
+          It is a deliberate trade — slightly fewer impressions, materially more people who stay
+          long enough to see one — and it is the decision on this project I would most want to
+          defend, because it is a commercial judgement rather than a technical one.`,
       },
       {
         title: 'Free streams are not stable infrastructure',
