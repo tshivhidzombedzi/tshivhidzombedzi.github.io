@@ -240,7 +240,16 @@ export const projects = [
     status: STATUS.beta,
     period: '2026 – present',
     role: 'Sole builder and product owner',
-    links: [],
+    // Added back on his instruction 2026-11-08. This is a live product page with pricing on
+    // it, so it does reveal a commercial product — but not the trading work, which is what the
+    // privacy scope was about. It is also the only public proof the application exists.
+    links: [
+      {
+        label: 'hoshidub.com',
+        url: 'https://hoshidub.com',
+        note: 'The released application, publicly downloadable',
+      },
+    ],
     oneLiner:
       'A released Windows application built entirely on locally hosted speech and language models, with no network dependency at runtime.',
 
