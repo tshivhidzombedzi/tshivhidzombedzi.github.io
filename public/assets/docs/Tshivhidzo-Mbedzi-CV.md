@@ -2,7 +2,7 @@
 
 **AI & Technology Specialist — AI Evaluation, Generative AI, IT Support**
 
-mbedzimz1@gmail.com · linkedin.com/in/tshivhidzo-mbedzi · Pretoria, South Africa
+mbedzimz1@gmail.com · linkedin.com/in/tshivhidzo-mbedzi · github.com/tshivhidzombedzi · Pretoria, South Africa
 
 *Available immediately · Open to fully remote roles worldwide*
 

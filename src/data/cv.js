@@ -30,7 +30,13 @@ export const cv = {
   headline: 'AI & Technology Specialist — AI Evaluation, Generative AI, IT Support',
   location: `${profile.location.city}, ${profile.location.country}`,
   availability: 'Available immediately · Open to fully remote roles worldwide',
-  contactLine: [profile.contact.email, profile.contact.linkedinLabel, `${profile.location.city}, South Africa`],
+  // Header line. GitHub is included now that there is a public repository to point at.
+  contactLine: [
+    profile.contact.email,
+    profile.contact.linkedinLabel,
+    profile.contact.githubLabel,
+    `${profile.location.city}, South Africa`,
+  ],
 
   summary: `Independent technology builder with a verifiable record of shipping AI software: two
 released Windows desktop applications built on locally hosted speech and language models, and

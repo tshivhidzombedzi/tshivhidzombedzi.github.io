@@ -30,16 +30,18 @@ export default function cvPage() {
     <h1>${esc(cv.name)}</h1>
     <p class="page-lead">${esc(cv.headline)}</p>
     <div class="cv-actions">
-      <a class="btn btn--primary" href="/assets/docs/${esc(profile.cv.fileName)}" download>Download .docx</a>
-      <a class="btn btn--ghost" href="/assets/docs/${esc(profile.cv.mdName)}" download>Download plain text</a>
-      <button class="btn btn--quiet" type="button" data-print>Print / save as PDF</button>
+      <a class="btn btn--primary" href="/assets/docs/${esc(profile.cv.pdfName)}" download>Download PDF</a>
+      <a class="btn btn--ghost" href="/assets/docs/${esc(profile.cv.fileName)}" download>Download .docx</a>
+      <a class="btn btn--quiet" href="/assets/docs/${esc(profile.cv.mdName)}" download>Plain text</a>
+      <button class="btn btn--quiet" type="button" data-print>Print this page</button>
     </div>
     <div class="head-note">
       <p>
-        <strong>ATS notes.</strong> The downloadable .docx is single-column with standard section
+        <strong>ATS notes.</strong> Both the PDF and the .docx are single-column with standard section
         headings and no tables, text boxes, columns or graphics — the four things applicant tracking
-        systems most often mangle. Every role is labelled independent or self-employed; there is no
-        invented employer. CS50 AI with Python is excluded from Education because its completion is
+        systems most often mangle. The PDF is generated as real text rather than an image, so a
+        parser extracts it exactly as you would by selecting it. Every role is labelled
+        independent or self-employed; there is no invented employer. CS50 AI with Python is excluded from Education because its completion is
         unverified, and appears only under continuing development, marked in progress.
       </p>
     </div>

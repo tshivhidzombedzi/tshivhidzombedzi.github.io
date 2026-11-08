@@ -44,6 +44,7 @@ jobs:
       - name: Generate CV and share image
         run: |
           node tools/make-cv.js
+          node tools/make-pdf.js
           node tools/make-og.js
 
       - name: Build

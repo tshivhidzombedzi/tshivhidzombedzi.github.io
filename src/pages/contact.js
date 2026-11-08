@@ -98,6 +98,7 @@ ${section({
         <p class="side-h">Documents</p>
         <ul class="side-list">
           <li><a href="/cv/">Curriculum vitae (online)</a></li>
+          <li><a href="/assets/docs/${esc(profile.cv.pdfName)}" download>Download CV (PDF)</a></li>
           <li><a href="/assets/docs/${esc(profile.cv.fileName)}" download>Download CV (.docx)</a></li>
           <li><a href="/assets/docs/${esc(profile.cv.mdName)}" download>Download CV (plain text)</a></li>
         </ul>
