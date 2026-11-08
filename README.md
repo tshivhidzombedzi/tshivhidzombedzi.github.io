@@ -2,16 +2,20 @@
 
 A complete, deployable portfolio site, CV and recruiter-facing content pack.
 
-**18 pages · 0 runtime dependencies · ~73 ms build · ~530 kB total output**
+**Live: https://tshivhidzombedzi.github.io**
+
+**18 pages · 0 runtime dependencies · ~56 ms build · 27 unit tests · 23 verification rules**
 
 ---
 
 ## Quick start
 
 ```bash
+npm test          # 27 unit tests: escaping, base-path rewrite, editorial invariants
 npm run build     # writes ./dist
-npm run serve     # preview http://localhost:4321
 npm run check     # verify the build (links, SEO, accessibility, placeholders)
+npm run verify    # all three, in order — run this before deploying
+npm run serve     # preview http://localhost:4321
 npm run cv        # regenerate the downloadable CV (.docx + .md)
 ```
 
@@ -137,18 +141,30 @@ and the downloadable file are generated from the same source, so they cannot dri
 
 ## Verification
 
+`npm test` covers the generator itself — 27 tests over escaping, the base-path rewrite that
+breaks a subpath deploy, and the editorial invariants (every project must carry a `notBuilt`
+list; no skill may claim AWS or TensorFlow; no verification case may name its sector; the
+contact address may not be a business domain). A future edit that breaks an editorial rule
+fails the test run rather than quietly shipping.
+
 `npm run check` is a real gate, not a formality. It fails the build on:
 
 - any broken internal link, missing asset or dead in-page anchor;
 - a page with no `<h1>`, more than one `<h1>`, or no title, description or canonical URL;
 - any `<img>` without `alt`, or any `target="_blank"` without `rel="noopener"`;
 - leftover placeholder text (`TODO`, `FIXME`, `lorem`, `PLACEHOLDER`);
-- a missing `sitemap.xml` or `robots.txt`.
+- a missing `sitemap.xml` or `robots.txt`;
+- accessibility defects: a missing landmark, a duplicate `id`, an `aria-*` reference pointing
+  at nothing, a link or button with no accessible name, or an inline SVG marked `role="img"`
+  with no name.
+
+The accessibility rules were verified by injecting four deliberate faults and confirming each
+one is caught. A check that never fires is worse than no check.
 
 It warns on titles and meta descriptions outside the lengths search engines display, and on
 skipped heading levels.
 
-Current status: **18 pages, 730 links and assets checked, 0 errors, 0 warnings.**
+Current status: **27 unit tests pass; 18 pages and 731 links/assets checked; 0 errors, 0 warnings.**
 
 Manually verified in a browser as well: desktop (1440px) and mobile (375px) layouts, no
 horizontal overflow at 375px, the mobile menu's `aria-expanded` and visibility toggling, and
